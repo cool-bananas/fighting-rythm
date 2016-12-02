@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://hud/fighting/lifebar.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "\nextends Polygon2D\n\n"
+
+[node name="HUD" type="Node"]
+
+[node name="fighting" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="lifebar" parent="fighting" instance=ExtResource( 1 )]
+
+script/script = SubResource( 1 )
+
+[node name="menu" type="Node2D" parent="."]
+
+[node name="rythm" type="Node2D" parent="."]
+
+

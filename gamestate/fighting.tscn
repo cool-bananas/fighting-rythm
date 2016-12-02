@@ -1,0 +1,117 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://gamestate/fighting.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 320 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 320 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 576, 4, 576, 128, -576, 128, -576, 4 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 576, 32 )
+
+[node name="fighting" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="limit_left" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -32, 32 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 288 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionShape2D" parent="limit_left"]
+
+transform/pos = Vector2( 0, 288 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="limit_right" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1056, 32 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 288 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionShape2D" parent="limit_right"]
+
+transform/pos = Vector2( 0, 288 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="limit_bottom" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 512, 512 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionPolygon2D" parent="limit_bottom"]
+
+build_mode = 0
+polygon = Vector2Array( -576, 4, -576, 128, 576, 128, 576, 4 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="limit_top" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 512, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -32 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionShape2D" parent="limit_top"]
+
+transform/pos = Vector2( 0, -32 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+

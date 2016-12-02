@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://database/char.gd" type="Script" id=1]
+
+[node name="database" type="Node"]
+
+[node name="chars" type="Node" parent="."]
+
+[node name="dummy" type="Node" parent="chars"]
+
+script/script = ExtResource( 1 )
+name = "dummy"
+hp = 256
+speed = 100.0
+power = 20.0
+
+
