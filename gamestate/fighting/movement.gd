@@ -1,16 +1,30 @@
 
-extends Node
+extends "res://gamestate/controller.gd"
 
 const ACTIONS = preload("res://actions.gd")
+
+onready var input = get_node("/root/input")
 
 var player1
 var player2
 
-func set_p1(p1):
-  player1 = p1
+func _ready():
+	yield(self, "players_are_set")
+	set_each_player()
+	load_input()
 
-func set_p2(p2):
-  player2 = p2
+func load_input():
+	input.connect("hold_action", self, "_on_hold_action")
+	input.connect("press_action", self, "_on_press_action")
+	input.connect("p1_idle", self, "_on_p1_idle")
+	input.connect("p2_idle", self, "_on_p2_idle")
+
+func set_each_player():
+  for pl in get_players().get_children():
+    if pl.which_player() == 1:
+      player1 = pl
+    elif pl.which_player() == 2:
+      player2 = pl
 
 func _on_hold_action(action):
   #print("HOLD: " + str(action))
@@ -27,20 +41,8 @@ func _on_press_action(action):
   print("PRESS: " + str(action))
   if action == ACTIONS.P1_UP:
     player1.jump()
-  elif action == ACTIONS.P1_A:
-    pass
-  elif action == ACTIONS.P1_B:
-    pass
-  elif action == ACTIONS.P1_C:
-    pass
   elif action == ACTIONS.P2_UP:
     player2.jump()
-  elif action == ACTIONS.P2_A:
-    pass
-  elif action == ACTIONS.P2_B:
-    pass
-  elif action == ACTIONS.P2_C:
-    pass
 
 func _on_p1_idle():
   player1.idle()
