@@ -1,34 +1,13 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
-[ext_resource path="res://hud/fighting.gd" type="Script" id=2]
-[ext_resource path="res://hud/fighting/lifebar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=2]
 
 [node name="main" type="Node"]
 
 script/script = ExtResource( 1 )
 initial = "fighting"
 
-[node name="HUD" type="Node" parent="."]
-
-[node name="fighting" type="Node2D" parent="HUD"]
-
-script/script = ExtResource( 2 )
-
-[node name="lifebar_1" parent="HUD/fighting" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 170, 40 )
-
-[node name="lifebar_2" parent="HUD/fighting" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 590, 40 )
-
-[node name="menu" type="Node2D" parent="HUD"]
-
-visibility/visible = false
-
-[node name="rythm" type="Node2D" parent="HUD"]
-
-visibility/visible = false
+[node name="HUD" parent="." instance=ExtResource( 2 )]
 
 

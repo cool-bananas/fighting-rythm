@@ -25,6 +25,8 @@ func _fixed_process(delta):
     move(motion)
 
 func _process(delta):
+  if state == 'idle' or state == 'walk':
+    face_opponent()
   if get_pos().y >= FLOOR and state != 'idle' and state != 'walk':
     state = 'idle'
     emit_signal("change_state", state)
@@ -44,9 +46,23 @@ func jump():
 
 func idle():
   if state != 'jump' and state != 'attack' and state != 'idle':
-    print("here!")
+    pass
+    #print("here!")
     #state = 'idle'
     #emit_signal("change_state", state)
+
+func face_opponent():
+  var opponent = get_opponent()
+  if opponent.get_pos().x < get_pos().x:
+    set_scale(Vector2(-1, 1))
+  elif opponent.get_pos().x > get_pos().x:
+    set_scale(Vector2(1, 1))
+
+func get_opponent():
+  var players = get_parent().get_children()
+  for pl in players:
+    if pl != self:
+      return pl
 
 func accelerate(acc):
   speed += acc
