@@ -12,7 +12,6 @@ var polygon = [
   Vector2(8, 24),
 ]
 
-
 func load_health(character):
   var chars = database.get_node("chars")
   chara = chars.get_node(character)

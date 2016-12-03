@@ -1,46 +1,35 @@
 
 extends Node2D
 
-const GRAVITY = preload("res://gamestate/fighting/gravity.gd")
-const MOVEMENT = preload("res://gamestate/fighting/movement.gd")
-const COLLISION = preload("res://gamestate/fighting/collision.gd")
+const PLAYERBODY = preload("res://player.tscn")
 
-const CHARACTERS = "res://characters/"
-
-onready var choices = get_node("/root/choices")
-onready var input = get_node("/root/input")
+onready var setup = get_node("/root/setup")
 onready var players = get_node("players")
-onready var gravity = GRAVITY.new()
-onready var movement = MOVEMENT.new()
-var player1
-var player2
+onready var controllers = get_node("controllers")
 
-func load_player1():
-	var chara = load(CHARACTERS + choices.get_player1() + ".tscn")
-	player1 = chara.instance()
-	gravity.add_body(player1)
-	movement.set_p1(player1)
-	player1.set_pos(Vector2(100, 128))
-	players.add_child(player1)
+var ready = [ false, false ]
 
-func load_player2():
-	var chara = load(CHARACTERS + choices.get_player2() + ".tscn")
-	player2 = chara.instance()
-	gravity.add_body(player2)
-	movement.set_p2(player2)
-	player2.set_pos(Vector2(924, 128))
-	players.add_child(player2)
-
-func load_input():
-	input.connect("hold_action", movement, "_on_hold_action")
-	input.connect("press_action", movement, "_on_press_action")
-	input.connect("p1_idle", movement, "_on_p1_idle")
-	input.connect("p2_idle", movement, "_on_p2_idle")
+func load_player(pl):
+	var player = PLAYERBODY.instance(pl)
+	player.get_node("sprite").set_texture(load("res://assets/" + setup.get_player(pl) + ".tex"))
+	player.set_id(pl)
+	player.connect("player_ready", self, "_on_player_ready", [pl])
+	players.add_child(player)
+	print("Player instanced")
+	if pl == 1:
+		player.set_pos(Vector2(100, 256))
+	elif pl == 2:
+		player.set_pos(Vector2(924, 256))
 
 func _ready():
-	self.add_child(gravity)
-	self.add_child(movement)
-	load_player1()
-	load_player2()
-	load_input()
-	print("GAMESTATE LOADED")
+	print("Getting fight gamestate ready")
+	load_player(1)
+	load_player(2)
+
+func _on_player_ready(pl):
+	ready[pl - 1] = true
+	print(pl - 1)
+	if ready[0] and ready[1]:
+		for controller in controllers.get_children():
+			controller.set_players(players)
+		print("GAMESTATE LOADED")

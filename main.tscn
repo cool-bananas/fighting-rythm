@@ -10,4 +10,11 @@ initial = "fighting"
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
+[node name="GAME" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
 

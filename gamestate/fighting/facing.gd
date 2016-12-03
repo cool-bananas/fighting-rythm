@@ -1,13 +1,8 @@
 
-extends Node
-
-onready var players = get_parent().get_node("players")
-
-func _ready():
-  set_process(true)
+extends "res://gamestate/controller.gd"
 
 func _process(delta):
-  for pl in players.get_children():
+  for pl in get_players().get_children():
     if pl.get_state() == 'idle' or pl.get_state() == 'walk':
       face_opponent(pl)
 
@@ -19,6 +14,6 @@ func face_opponent(player):
     player.set_scale(Vector2(1, 1))
 
 func get_opponent(player):
-  for pl in players.get_children():
+  for pl in get_players().get_children():
     if pl != player:
       return pl
