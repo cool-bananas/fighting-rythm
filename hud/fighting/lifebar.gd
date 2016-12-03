@@ -13,13 +13,12 @@ var polygon = [
 ]
 
 func load_health(character):
-  var chars = database.get_node("chars")
-  chara = chars.get_node(character)
+  chara = character
   set_process(true)
 
 func _process(delta):
   var health = chara.get_hp()
-  var current = chara.get_hp()
+  var current = chara.get_current_hp()
   polygon[1].x = 244 * current / health
   polygon[2].x = 252 * current / health
-  set_polygon(polygon)
+  bar.set_polygon(polygon)

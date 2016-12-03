@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://gamestate/fighting.gd" type="Script" id=1]
 [ext_resource path="res://gamestate/fighting/movement.gd" type="Script" id=2]
 [ext_resource path="res://gamestate/fighting/gravity.gd" type="Script" id=3]
 [ext_resource path="res://gamestate/fighting/facing.gd" type="Script" id=4]
 [ext_resource path="res://gamestate/fighting/attack.gd" type="Script" id=5]
+[ext_resource path="res://gamestate/fighting/timelapse.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -50,6 +51,10 @@ script/script = ExtResource( 4 )
 
 script/script = ExtResource( 5 )
 
+[node name="timelapse" type="Node" parent="controllers"]
+
+script/script = ExtResource( 6 )
+
 [node name="limits" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
@@ -67,8 +72,8 @@ shapes/2/trigger = false
 shapes/3/shape = SubResource( 4 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 544, -64 )
 shapes/3/trigger = false
-collision/layers = 2
-collision/mask = 1
+collision/layers = 1
+collision/mask = 6
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0

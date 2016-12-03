@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://attacks/attack.gd" type="Script" id=1]
+[ext_resource path="res://assets/dummy.tex" type="Texture" id=2]
+[ext_resource path="res://attacks/hitbox.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "weak"
+length = 0.2
+loop = false
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("weak/area:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.06, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -12, 19.6 ), Vector2( 44, 19.6 ), Vector2( 52, 19.6 ), Vector2( -12, 19.6 ) ] }
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
+
+[node name="attack" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="test_sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -96 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 3
+
+[node name="animation" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/weak = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="weak" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 72
+collision/mask = 150
+script/script = ExtResource( 3 )
+damage = 10
+
+[node name="area" type="CollisionPolygon2D" parent="weak"]
+
+editor/display_folded = true
+transform/pos = Vector2( -12, 19.6 )
+build_mode = 0
+polygon = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="hit" type="Polygon2D" parent="weak/area"]
+
+polygon = Vector2Array( -12, -131.6, 56, -131.6, 56, -103.6, -12, -103.6 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0.404353 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="strong" type="Area2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 72
+collision/mask = 150
+script/script = ExtResource( 3 )
+damage = 10
+
+[node name="area" type="CollisionPolygon2D" parent="strong"]
+
+transform/pos = Vector2( -12, 19.6 )
+build_mode = 0
+polygon = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="bullet" type="Area2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 72
+collision/mask = 150
+script/script = ExtResource( 3 )
+damage = 10
+
+[node name="area" type="CollisionPolygon2D" parent="bullet"]
+
+transform/pos = Vector2( -12, 19.6 )
+build_mode = 0
+polygon = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+
