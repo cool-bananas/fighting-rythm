@@ -35,6 +35,7 @@ const LAYERS = {
 }
 
 signal attack_done (type)
+signal attack_animation (type)
 
 onready var animation = get_node("animation")
 onready var hitboxes = {
@@ -79,25 +80,27 @@ func weak_attack():
   set_hitbox("weak")
   animation.stop()
   animation.play("weak")
+  emit_signal("attack_animation", "weak")
   yield(animation, "finished")
-  emit_signal("attack_done", 1)
-  reset_hitbox_layers()
-  stop_attack()
+  done()
 
 func strong_attack():
   set_hitbox("strong")
   animation.stop()
   animation.play("strong")
+  emit_signal("attack_animation", "strong")
   yield(animation, "finished")
-  emit_signal("attack_done", 2)
-  reset_hitbox_layers()
-  stop_attack()
+  done()
 
 func bullet_attack():
   set_hitbox("bullet")
   animation.stop()
   animation.play("bullet")
+  emit_signal("attack_animation", "bullet")
   yield(animation, "finished")
-  emit_signal("attack_done", 3)
+  done()
+
+func done():
   reset_hitbox_layers()
   stop_attack()
+  emit_signal("attack_done")

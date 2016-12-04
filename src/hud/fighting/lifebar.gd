@@ -27,13 +27,13 @@ func _on_life_change():
   last_percentage = current / health
 
 func change_life(percentage):
-  print(last_percentage, " / ", percentage)
+  print(last_percentage, " -> ", percentage)
   if last_percentage != percentage:
+    print("update lifebar!")
     tween.interpolate_method(self, "rawset_bar", last_percentage, percentage, .5, Tween.TRANS_EXPO, Tween.EASE_OUT)
     tween.start()
 
 func rawset_bar(percentage):
   polygon[1] = Vector2(236 * percentage, 0)
   polygon[2] = Vector2(236 * percentage + 8, 24)
-  print(polygon[1], "; ", polygon[2])
   bar.set_polygon(polygon)

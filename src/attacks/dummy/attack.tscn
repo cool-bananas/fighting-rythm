@@ -1,10 +1,24 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://attacks/attack.gd" type="Script" id=1]
 [ext_resource path="res://assets/dummy.tex" type="Texture" id=2]
 [ext_resource path="res://attacks/hitbox.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
+
+resource/name = "bullet"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "strong"
+length = 0.5
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=1]
 
 resource/name = "weak"
 length = 0.2
@@ -16,7 +30,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.06, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -12, 19.6 ), Vector2( 44, 19.6 ), Vector2( 52, 19.6 ), Vector2( -12, 19.6 ) ] }
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
@@ -43,7 +57,9 @@ hframes = 3
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/weak = SubResource( 2 )
+anims/bullet = SubResource( 4 )
+anims/strong = SubResource( 5 )
+anims/weak = SubResource( 1 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -53,7 +69,7 @@ autoplay = ""
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -104,7 +120,7 @@ angular_damp = 1.0
 collision/layers = 72
 collision/mask = 150
 script/script = ExtResource( 3 )
-damage = 10
+damage = 40.0
 strength = 1
 
 [node name="area" type="CollisionPolygon2D" parent="strong"]
@@ -130,7 +146,7 @@ angular_damp = 1.0
 collision/layers = 72
 collision/mask = 150
 script/script = ExtResource( 3 )
-damage = 10
+damage = 15.0
 strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="bullet"]

@@ -9,6 +9,7 @@ signal player_attack (player, strength)
 onready var database = get_node("/root/database")
 onready var attacks = get_node("attack")
 onready var timer = get_node("timer")
+onready var tween = get_node("tween")
 var state = 'idle'
 var facing = 'right'
 var player
@@ -22,6 +23,7 @@ var combo = {
 func _ready():
   var attacks = get_node("attack")
   attacks.set_player(player)
+  attacks.connect("attack_animation", self, "_on_attack_animation")
   connect("change_state", get_node("animation"), "_on_change_state")
   set_process(true)
   print("PLAYER ", player, " READY")
@@ -65,7 +67,7 @@ func is_facing(dir):
 func walk(dir):
   if state == 'stagger':
     return
-  if state != 'attack_A' and state != 'attack_B' and state != 'attack_C' :
+  if state != 'attack' :
     accelerate(WALK_ACC * dir)
     if state != 'jump' and state != 'walk':
       set_state('walk')
@@ -84,7 +86,7 @@ func idle():
     set_state('idle')
 
 func attack(type):
-  if state == 'stagger':
+  if state == 'stagger' or state == 'attack':
     return
 
   if type == 1:
@@ -98,12 +100,12 @@ func attack(type):
     emit_signal("player_attack", self, "bullet")
 
 func stagger(dir, strength):
-  timer.set_wait_time(.1 + (strength + 1) * .3)
-  timer.start()
-  accelerate(WALK_ACC * dir)
+  var t = .05 + (strength + 1) * 1/60
+  var acc = WALK_ACC * 1 * dir * (strength + 1) * (strength + 1)
+  tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, t, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+  tween.start()
   set_state('stagger')
-  yield(timer, "timeout")
-  print("oooff!")
+  yield(tween, "tween_complete")
   set_state('idle')
 
 func set_state(st):
@@ -135,4 +137,13 @@ func get_combo():
 func take_dmg(damage, strength):
   if state != 'defend' and state != 'damage_heavy':
     emit_signal("player_stagger", self, strength)
+    print("Taking damage: ", damage)
     get_chara().take_dmg(damage)
+
+func _on_attack_animation(type):
+  if type == 'strong':
+    var acc = WALK_ACC * 2
+    if facing == 'left':
+      acc *= -1
+    tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, .1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+    tween.start()
