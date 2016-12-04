@@ -1,4 +1,17 @@
+<style>
 
+#readme {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+p {
+  padding: 0 0 1em;
+  margin: 0;
+}
+
+</style>
+<div id="readme">
 # Game project
 
 ### PCS 2530
@@ -18,3 +31,4 @@ Se tivermos assets o jogo já vai ficar muito mais bonito.
 Se tivermos mais elementos de interface,
 também vai ficar com cara de jogo de verdade.
 Tudo bem ficar meio bugado. O importante é ficar bonito.
+</div>
