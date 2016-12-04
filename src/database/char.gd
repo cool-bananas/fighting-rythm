@@ -27,8 +27,9 @@ func get_current_hp():
   return hp - damage
 
 func take_dmg(dmg):
-  emit_signal("life_change")
+  print("life_change!")
   damage += dmg
+  emit_signal("life_change")
   if damage >= hp:
     damage = hp
     emit_signal("char_ko", get_name())

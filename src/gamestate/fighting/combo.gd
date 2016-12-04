@@ -7,47 +7,25 @@ func _ready():
     player.connect("player_attack", self, "_on_player_attack")
 
 func _on_player_attack(player, type):
-  var attacks = player.get_attacks()
-  var combo = player.get_combo()
-  call(type + "_attack", player, attacks, combo)
+  call(type + "_attack", player, player.get_attacks())
 
-func weak_attack(player, attacks, combo):
-  if combo.weak < 3:
-    combo.weak += 1
-    player.still()
-    player.set_state('attack_A')
-    attacks.weak_attack()
-    yield(attacks, "attack_done")
-    player.set_timer(0.05)
-    if combo.weak == 3:
-      player.set_timer(0.4)
-  yield(player.get_timer(), "timeout")
+func weak_attack(player, attacks):
+  player.still()
+  player.set_state('attack')
+  attacks.weak_attack()
+  yield(attacks, "attack_done")
   player.set_state('idle')
-  player.reset_combo()
-  print("combo reset!")
 
-func strong_attack(player, attacks, combo):
-  if combo.strong < 1:
-    combo.strong += 1
-    player.still()
-    player.set_state('attack_B')
-    attacks.strong_attack()
-    yield(attacks, "attack_done")
-    player.set_timer(0.5)
-  yield(player.get_timer(), "timeout")
+func strong_attack(player, attacks):
+  player.still()
+  player.set_state('attack')
+  attacks.strong_attack()
+  yield(attacks, "attack_done")
   player.set_state('idle')
-  player.reset_combo()
-  print("combo reset!")
 
-func bullet_attack(player, attacks, combo):
-  if combo.bullet < 1:
-    combo.bullet += 1
-    player.still()
-    player.set_state('attack_B')
-    attacks.bullet_attack()
-    yield(attacks, "attack_done")
-    player.set_timer(0.5)
-  yield(player.get_timer(), "timeout")
+func bullet_attack(player, attacks):
+  player.still()
+  player.set_state('attack')
+  attacks.bullet_attack()
+  yield(attacks, "attack_done")
   player.set_state('idle')
-  player.reset_combo()
-  print("combo reset!")
