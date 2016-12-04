@@ -26,9 +26,9 @@ func load_player(pl):
 	players.add_child(player)
 	print("Player instanced")
 	if pl == 1:
-		player.set_pos(Vector2(100, 256))
+		player.set_pos(Vector2(128, 500))
 	elif pl == 2:
-		player.set_pos(Vector2(924, 256))
+		player.set_pos(Vector2(924, 500))
 
 func _ready():
 	print("Getting fight gamestate ready")

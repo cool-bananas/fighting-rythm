@@ -3,7 +3,7 @@ extends Node
 
 signal players_are_set ()
 
-var players = []
+var players
 
 func set_players(players_node):
   players = players_node
