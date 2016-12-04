@@ -2,6 +2,7 @@
 extends Node
 
 signal char_ko ()
+signal life_change ()
 
 export (String) var name
 export (int) var hp
@@ -26,6 +27,7 @@ func get_current_hp():
   return hp - damage
 
 func take_dmg(dmg):
+  emit_signal("life_change")
   damage += dmg
   if damage >= hp:
     damage = hp
