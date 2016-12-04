@@ -68,6 +68,8 @@ func set_hitbox(name):
   set_hitbox_layers(name)
   stop_attack()
   hitboxes[name].show()
+  remove_child(hitboxes[name])
+  add_child(hitboxes[name])
 
 func stop_attack():
   for i in hitboxes:

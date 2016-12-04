@@ -64,7 +64,7 @@ collision/layers = 72
 collision/mask = 150
 script/script = ExtResource( 3 )
 damage = 10
-strength = null
+strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="weak"]
 
@@ -105,7 +105,7 @@ collision/layers = 72
 collision/mask = 150
 script/script = ExtResource( 3 )
 damage = 10
-strength = null
+strength = 1
 
 [node name="area" type="CollisionPolygon2D" parent="strong"]
 
@@ -131,7 +131,7 @@ collision/layers = 72
 collision/mask = 150
 script/script = ExtResource( 3 )
 damage = 10
-strength = null
+strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="bullet"]
 

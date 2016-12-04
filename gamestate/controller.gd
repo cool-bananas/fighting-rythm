@@ -13,3 +13,8 @@ func set_players(players_node):
 
 func get_players():
   return players
+
+func get_opponent(player):
+  for pl in get_players().get_children():
+    if pl != player:
+      return pl

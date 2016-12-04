@@ -36,7 +36,7 @@ func set_ideal_zoom():
       diff += pl.get_pos()
     else:
       diff -= pl.get_pos()
-  len += diff.length()
+  len = abs(diff.x)
   if len > MAX_DISTANCE:
     var z = (len / MAX_DISTANCE)
     print(z)
