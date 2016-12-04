@@ -3,7 +3,12 @@
 [ext_resource path="res://hud/fighting.gd" type="Script" id=1]
 [ext_resource path="res://hud/fighting/lifebar.tscn" type="PackedScene" id=2]
 
-[node name="HUD" type="Node"]
+[node name="HUD" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
 
 [node name="fighting" type="Node2D" parent="."]
 

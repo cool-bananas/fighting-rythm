@@ -19,6 +19,6 @@ func load_health(character):
 func _process(delta):
   var health = chara.get_hp()
   var current = chara.get_current_hp()
-  polygon[1].x = 244 * current / health
-  polygon[2].x = 252 * current / health
+  polygon[1].x = 236 * current / health
+  polygon[2].x = 236 * current / health + 8
   bar.set_polygon(polygon)
