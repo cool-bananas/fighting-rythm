@@ -8,6 +8,7 @@ signal fighting_ready (pls)
 onready var setup = get_node("/root/setup")
 onready var players = get_node("players")
 onready var controllers = get_node("controllers")
+onready var bgm = get_node("/root/main/BGM")
 
 var ready = { "p1": false, "p2": false }
 
@@ -46,3 +47,6 @@ func finish_preparations():
 			controller.set_players(players)
 		print("GAMESTATE LOADED")
 		emit_signal("fighting_ready", get_player_meta(1), get_player_meta(2))
+		var r = randi()
+		print(r)
+		bgm.play(r % 4)
