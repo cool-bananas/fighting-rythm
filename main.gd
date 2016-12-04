@@ -2,7 +2,6 @@
 extends Node
 
 const GAMESTATES = "res://gamestate/"
-const PLAYERBODY = preload("res://player.tscn")
 
 export (String, "fighting", "rhythm", "menu") var initial
 onready var gamestate = get_node("GAME")

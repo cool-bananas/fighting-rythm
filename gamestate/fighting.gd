@@ -1,7 +1,7 @@
 
 extends Node2D
 
-const PLAYERBODY = preload("res://player.tscn")
+const PLAYERBODY = preload("res://player/player.tscn")
 
 signal fighting_ready (pls)
 
