@@ -19,8 +19,8 @@ func weak_attack(player, attacks, combo):
     attacks.weak_attack()
     yield(attacks, "attack_done")
     player.set_timer(0.05)
-  if combo.weak == 3:
-    player.set_timer(0.4)
+    if combo.weak == 3:
+      player.set_timer(0.4)
   yield(player.get_timer(), "timeout")
   player.set_state('idle')
   player.reset_combo()
