@@ -8,8 +8,10 @@ export (float) var damage = 10
 export (int, "weak", "strong") var strength
 
 func _ready():
-  connect("area_enter", self, "_on_area_enter")
-  connect("body_enter", self, "_on_body_enter")
+  if not is_connected("area_enter", self, "_on_area_enter"):
+    connect("area_enter", self, "_on_area_enter")
+  if not is_connected("body_enter", self, "_on_body_enter"):
+    connect("body_enter", self, "_on_body_enter")
 
 func _on_area_enter(attack):
   if is_hidden(): return
