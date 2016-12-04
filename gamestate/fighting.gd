@@ -8,7 +8,6 @@ signal fighting_ready (pls)
 onready var setup = get_node("/root/setup")
 onready var players = get_node("players")
 onready var controllers = get_node("controllers")
-onready var camera = get_node("camera")
 
 var ready = { "p1": false, "p2": false }
 
@@ -43,7 +42,6 @@ func _on_player_ready(pl):
 
 func finish_preparations():
 	if ready["p1"] and ready["p2"]:
-		camera.set_players(players)
 		for controller in controllers.get_children():
 			controller.set_players(players)
 		print("GAMESTATE LOADED")
