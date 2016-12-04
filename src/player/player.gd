@@ -4,6 +4,7 @@ extends "res://player/body.gd"
 signal player_ready (pl)
 signal change_state (st)
 signal player_stagger (player, strength)
+signal player_attack (player, strength)
 
 onready var database = get_node("/root/database")
 onready var attacks = get_node("attack")
@@ -12,6 +13,11 @@ var state = 'idle'
 var facing = 'right'
 var player
 var chara
+var combo = {
+  "weak": 0,
+  "strong": 0,
+  "bullet": 0,
+}
 
 func _ready():
   var attacks = get_node("attack")
@@ -23,9 +29,7 @@ func _ready():
   emit_signal("player_ready")
 
 func _process(delta):
-  if get_pos().y >= FLOOR and state != 'idle' and state != 'walk':
-    if state == 'stagger':
-      return
+  if get_pos().y >= FLOOR and state == 'jump':
     set_state('idle')
 
 func set_chara(name):
@@ -80,25 +84,18 @@ func idle():
     set_state('idle')
 
 func attack(type):
-  if state == 'attack_A' or state == 'attack_B' or state == 'attack_C':
-    return
-
   if state == 'stagger':
     return
 
   if type == 1:
     print("WEAK ATTACK!")
-    still()
-    set_state('attack_A')
-    attacks.weak_attack()
-    yield(attacks, "attack_done")
-    set_state('idle')
+    emit_signal("player_attack", self, "weak")
   elif type == 2:
     print("STRONG ATTACK!")
-    attacks.strong_attack()
+    emit_signal("player_attack", self, "strong")
   elif type == 3:
     print("BULLET ATTACK!")
-    attacks.bullet_attack()
+    emit_signal("player_attack", self, "bullet")
 
 func stagger(dir, strength):
   timer.set_wait_time(.1 + (strength + 1) * .3)
@@ -115,6 +112,25 @@ func set_state(st):
 
 func get_state():
   return state
+
+func get_timer():
+  return timer
+
+func set_timer(t):
+  timer.stop()
+  timer.set_wait_time(t)
+  timer.start()
+  return timer
+
+func get_attacks():
+  return attacks
+
+func reset_combo():
+  for c in combo:
+    combo[c] = 0
+
+func get_combo():
+  return combo
 
 func take_dmg(damage, strength):
   if state != 'defend' and state != 'damage_heavy':

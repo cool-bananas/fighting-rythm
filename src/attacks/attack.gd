@@ -81,10 +81,23 @@ func weak_attack():
   animation.play("weak")
   yield(animation, "finished")
   emit_signal("attack_done", 1)
+  reset_hitbox_layers()
   stop_attack()
 
 func strong_attack():
-  pass
+  set_hitbox("strong")
+  animation.stop()
+  animation.play("strong")
+  yield(animation, "finished")
+  emit_signal("attack_done", 2)
+  reset_hitbox_layers()
+  stop_attack()
 
 func bullet_attack():
-  pass
+  set_hitbox("bullet")
+  animation.stop()
+  animation.play("bullet")
+  yield(animation, "finished")
+  emit_signal("attack_done", 3)
+  reset_hitbox_layers()
+  stop_attack()

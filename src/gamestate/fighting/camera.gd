@@ -39,7 +39,6 @@ func set_ideal_zoom():
   len = abs(diff.x)
   if len > MAX_DISTANCE:
     var z = (len / MAX_DISTANCE)
-    print(z)
     set_zoom(Vector2(1, 1) * z)
   else:
     set_zoom(Vector2(1, 1))

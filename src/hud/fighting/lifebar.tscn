@@ -31,4 +31,11 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
+[node name="tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://gamestate/fighting.gd" type="Script" id=1]
 [ext_resource path="res://gamestate/fighting/movement.gd" type="Script" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://gamestate/fighting/facing.gd" type="Script" id=4]
 [ext_resource path="res://gamestate/fighting/attack.gd" type="Script" id=5]
 [ext_resource path="res://gamestate/fighting/stagger.gd" type="Script" id=6]
-[ext_resource path="res://gamestate/fighting/camera.gd" type="Script" id=7]
+[ext_resource path="res://gamestate/fighting/combo.gd" type="Script" id=7]
+[ext_resource path="res://gamestate/fighting/camera.gd" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -107,6 +108,10 @@ script/script = ExtResource( 5 )
 
 script/script = ExtResource( 6 )
 
+[node name="combo" type="Node" parent="controllers"]
+
+script/script = ExtResource( 7 )
+
 [node name="camera" type="Camera2D" parent="controllers"]
 
 transform/pos = Vector2( 736, 512 )
@@ -127,6 +132,6 @@ drag_margin/left = 0.1
 drag_margin/top = 0.1
 drag_margin/right = 0.1
 drag_margin/bottom = 0.1
-script/script = ExtResource( 7 )
+script/script = ExtResource( 8 )
 
 
