@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://assets/fonts/header48.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://assets/fonts/header36.fnt" type="BitmapFont" id=2]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "accept"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("press_start:visibility/visible")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ true, false, true, false, true, false, true, false, true ] }
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "blink"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("press_start:visibility/visible")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+
+[node name="menu" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="background" type="Polygon2D" parent="."]
+
+polygon = Vector2Array( 0, 640, 1024, 640, 1024, 0, 0, 0 )
+uv = Vector2Array(  )
+color = Color( 0.286072, 0.290357, 0.335938, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="title_screen" type="Node2D" parent="."]
+
+[node name="title" type="Label" parent="title_screen"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 256.0
+margin/top = 224.0
+margin/right = 768.0
+margin/bottom = 352.0
+custom_fonts/font = ExtResource( 1 )
+text = "Fight!"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="press_start" type="Label" parent="title_screen"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 384.0
+margin/top = 448.0
+margin/right = 640.0
+margin/bottom = 544.0
+custom_fonts/font = ExtResource( 2 )
+text = "[ press start ]"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="animation" type="AnimationPlayer" parent="title_screen"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/accept = SubResource( 2 )
+anims/blink = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "blink"
+
+[node name="char_select" type="Node2D" parent="."]
+
+visibility/visible = false
+
+
