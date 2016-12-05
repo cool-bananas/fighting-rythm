@@ -9,9 +9,6 @@ onready var input = get_node("/root/input")
 onready var setup = get_node("/root/setup")
 onready var database = get_node("/root/database")
 
-func _ready():
-  connect("change_screen", get_parent().get_parent(), "_on_change_screen")
-
 func focus():
   input.connect("press_action", self, "_on_press_action")
   on_focus()
