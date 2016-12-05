@@ -10,12 +10,23 @@ onready var setup = get_node("/root/setup")
 onready var database = get_node("/root/database")
 
 func _ready():
-  connect("change_screen", get_parent(), "_on_change_screen")
+  connect("change_screen", get_parent().get_parent(), "_on_change_screen")
 
 func focus():
-  # implement input connections
-  pass
+  print("FOCUS TITLE")
+  input.connect("press_action", self, "_on_press_action")
+  on_focus()
 
 func unfocus():
-  # implement input disconnections
+  if input.is_connected("press_action", self, "_on_press_action"):
+    input.disconnect("press_action", self, "_on_press_action")
+  on_unfocus()
+
+func on_focus():
+  pass
+
+func on_unfocus():
+  pass
+
+func _on_press_action(action):
   pass
