@@ -80,8 +80,8 @@ func jump():
     set_state('jump')
 
 func idle():
-  if state == 'stagger':
-    return
+  print("CALLING IDLE")
+  print("Current state: ", get_state())
   if state == 'walk':
     set_state('idle')
 
