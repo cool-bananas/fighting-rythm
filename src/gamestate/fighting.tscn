@@ -32,6 +32,7 @@ points = Vector2Array( 0, 0, -64, -64, 1440, -64, 1376, 0 )
 [node name="fighting" type="Node2D"]
 
 script/script = ExtResource( 1 )
+name = "fighting"
 
 [node name="scenario" type="Polygon2D" parent="."]
 

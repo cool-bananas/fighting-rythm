@@ -1,5 +1,5 @@
 
-extends Node
+extends Object
 
 const P1_UP    = 0
 const P1_RIGHT = 1

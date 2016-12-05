@@ -29,8 +29,6 @@ var KEYMAP = {
 
 signal hold_action (act)
 signal press_action (act)
-signal p1_idle ()
-signal p2_idle ()
 
 func _ready():
   set_process(true)

@@ -1,9 +1,7 @@
 
-extends Node2D
+extends "res://gamestate/gamestate.gd"
 
 const PLAYERBODY = preload("res://player/player.tscn")
-
-signal fighting_ready (pls)
 
 onready var setup = get_node("/root/setup")
 onready var players = get_node("players")
@@ -33,7 +31,6 @@ func load_player(pl):
 
 func _ready():
 	print("Getting fight gamestate ready")
-	connect("fighting_ready", get_node("/root/main/HUD/fighting"), "_on_fighting_ready")
 	load_player(1)
 	load_player(2)
 	finish_preparations()
@@ -46,7 +43,7 @@ func finish_preparations():
 		for controller in controllers.get_children():
 			controller.set_players(players)
 		print("GAMESTATE LOADED")
-		emit_signal("fighting_ready", get_player_meta(1), get_player_meta(2))
+		emit_signal("gamestate_ready", get_player_meta(1), get_player_meta(2))
 		var r = randi()
-		print(r)
-		bgm.play(r % 4)
+		var list_size = bgm.get_node("fighting").get_children().size()
+		bgm.play(r % list_size)
