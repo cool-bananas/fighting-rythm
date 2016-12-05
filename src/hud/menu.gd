@@ -18,10 +18,8 @@ func _on_change_screen(idx):
 
 func set_focus(idx):
   menus[focus].unfocus()
-  fade.start(1.0)
-  print("fading in...")
+  fade.start(1.2)
   yield(fade, "fade_middle")
-  print("fading out...")
   for m in menus:
     m.hide()
   menus[idx].show()

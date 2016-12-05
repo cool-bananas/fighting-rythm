@@ -13,7 +13,6 @@ func _ready():
   connect("change_screen", get_parent().get_parent(), "_on_change_screen")
 
 func focus():
-  print("FOCUS TITLE")
   input.connect("press_action", self, "_on_press_action")
   on_focus()
 
