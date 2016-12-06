@@ -18,7 +18,7 @@ func get_player_meta(pl):
 func load_player(pl):
 	var player = PLAYERBODY.instance(pl)
 	var charname = setup.get_player(pl)
-	player.get_node("sprite").set_texture(load("res://assets/" + charname + ".tex"))
+	player.get_node("sprite").set_texture(load("res://assets/img/" + charname + ".tex"))
 	player.set_id(pl)
 	player.connect("player_ready", self, "_on_player_ready", [pl])
 	player.set_chara(charname)

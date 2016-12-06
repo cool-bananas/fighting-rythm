@@ -20,7 +20,7 @@ script/script = ExtResource( 1 )
 
 polygon = Vector2Array( 0, 640, 1024, 640, 1024, 0, 0, 0 )
 uv = Vector2Array(  )
-color = Color( 0.286072, 0.290357, 0.335938, 1 )
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
@@ -34,6 +34,10 @@ invert/border = 100.0
 
 [node name="title_screen" parent="screens" instance=ExtResource( 2 )]
 
+visibility/visible = false
+
 [node name="char_select" parent="screens" instance=ExtResource( 3 )]
+
+visibility/visible = false
 
 
