@@ -29,3 +29,4 @@ func set_focus(idx):
   menus[idx].show()
   yield(fade, "fade_end")
   menus[idx].focus()
+  focus = idx

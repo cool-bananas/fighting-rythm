@@ -8,3 +8,6 @@ func _on_press_action(action):
   yield(animation, "finished")
   emit_signal("change_screen", 1)
   pass
+
+func on_focus():
+  animation.play("blink")

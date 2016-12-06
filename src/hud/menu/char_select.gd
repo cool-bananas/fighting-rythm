@@ -5,6 +5,7 @@ const CHAR_ITEM = preload("res://hud/menu/char_select/char_item.tscn")
 const COLS = 3
 
 onready var chars = get_node("/root/database/chars").get_children()
+onready var chars_display = [ get_node("char_display1"), get_node("char_display2") ]
 onready var cursors = [ get_node("cursor1"), get_node("cursor2") ]
 onready var lists = [ get_node("list1"), get_node("list2") ]
 var selection = [ 0, 0 ]
@@ -15,6 +16,7 @@ func _ready():
       add_char_item(pl, n)
   for pl in range(2):
     update_cursor_pos(pl)
+    update_char_display(pl)
 
 func _on_press_action(action):
   var pl = floor(action / ACTIONS.P2_UP)
@@ -49,14 +51,20 @@ func move_selection(pl, dir):
   selection[pl] = selection[pl] % n
   print("SELECTION P", pl, ": ", selection[pl])
   update_cursor_pos(pl)
+  update_char_display(pl)
 
 func handle_action(pl, act):
   if act == 4:
     pass
   elif act == 6:
-    pass
+    selection[0] = 0
+    selection[1] = 0
+    emit_signal("change_screen", 0)
   elif act == 7:
     pass
+    #selection[0] = 0
+    #selection[1] = 0
+    #emit_signal("change_screen", 0)
   elif act == 8:
     pass
 
@@ -64,3 +72,9 @@ func update_cursor_pos(pl):
   var cursor = cursors[pl]
   var n = selection[pl]
   cursor.set_pos(get_square_pos(pl, n))
+
+func update_char_display(pl):
+  var n = selection[pl]
+  print(pl, n)
+  chars_display[pl].set_char(chars[n])
+  chars_display[pl].set_player(pl)

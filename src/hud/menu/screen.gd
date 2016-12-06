@@ -10,10 +10,12 @@ onready var setup = get_node("/root/setup")
 onready var database = get_node("/root/database")
 
 func focus():
+  print("FOCUS: ", get_name())
   input.connect("press_action", self, "_on_press_action")
   on_focus()
 
 func unfocus():
+  print("UNFOCUS: ", get_name())
   if input.is_connected("press_action", self, "_on_press_action"):
     input.disconnect("press_action", self, "_on_press_action")
   on_unfocus()

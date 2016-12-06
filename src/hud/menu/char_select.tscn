@@ -20,7 +20,7 @@ transform/pos = Vector2( 128, 384 )
 
 transform/pos = Vector2( 640, 384 )
 
-[node name="char_display1 2" parent="." instance=ExtResource( 3 )]
+[node name="char_display1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, 192 )
 
