@@ -14,4 +14,12 @@ hp = 256
 speed = 100.0
 power = 20.0
 
+[node name="Coxinha" type="Node" parent="chars"]
+
+script/script = ExtResource( 1 )
+name = "Coxinha"
+hp = 300
+speed = 80.0
+power = 40.0
+
 
