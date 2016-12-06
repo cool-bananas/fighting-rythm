@@ -15,16 +15,15 @@ func _ready():
   var j = 0
   var y = 5 * 64
   for chara in chars:
-    j += 1
-    if j % 3 == 0:
-      y += 128
     for i in range(2):
-      var y = 5 * 64 + j % 3
-      var pos = Vector2(i * 512 + 64 + (j % 3) * 128, y )
+      var pos = Vector2(i * 512 + 128 + (j % 3) * 128, y )
       var item = CHAR_ITEM.instance()
       item.set_pos(pos)
       lists[i].add_child(item)
       item.set_char(chara.get_name())
+    j += 1
+    if j % 3 == 0:
+      y += 128
 
 
 func _on_press_action(action):

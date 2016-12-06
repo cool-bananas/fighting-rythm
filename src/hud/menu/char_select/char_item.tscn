@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://hud/menu/char_select/char_item.gd" type="Script" id=1]
-[ext_resource path="res://assets/img/frame.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/frame.tex" type="Texture" id=2]
 
 [node name="char_item" type="Polygon2D"]
 
