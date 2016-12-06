@@ -16,6 +16,7 @@ func _ready():
   for n in range(chars.size()):
     add_char_item(n)
   for pl in range(2):
+    set_cursor_color(pl)
     update_cursor_pos(pl)
     update_char_display(pl)
 
@@ -75,6 +76,10 @@ func handle_action(pl, act):
     #emit_signal("change_screen", 0)
   elif act == 7:
     pass
+
+func set_cursor_color(pl):
+  var colors = cursors[pl].get_node("colors").get_children()
+  colors[pl].show()
 
 func update_cursor_pos(pl):
   var cursor = cursors[pl]
