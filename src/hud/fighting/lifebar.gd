@@ -3,6 +3,7 @@ extends Polygon2D
 
 onready var bar = get_node("bar")
 onready var tween = get_node("tween")
+onready var name = get_node("name")
 
 var chara
 var polygon = [
@@ -13,7 +14,9 @@ var polygon = [
 ]
 var last_percentage = 1.0
 
-func load_health(character):
+func load_character(character):
+  chara = character
+  get_node("name").set_text(chara.get_name())
   chara = character
   chara.connect("life_change", self, "_on_life_change")
 
