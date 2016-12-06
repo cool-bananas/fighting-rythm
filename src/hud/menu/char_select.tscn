@@ -13,8 +13,8 @@ script/script = ExtResource( 1 )
 
 transform/pos = Vector2( 640, 128 )
 
-[node name="player1" type="Node2D" parent="."]
+[node name="list1" type="Node2D" parent="."]
 
-[node name="player2" type="Node2D" parent="."]
+[node name="list2" type="Node2D" parent="."]
 
 
