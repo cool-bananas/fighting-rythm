@@ -24,7 +24,7 @@ func _ready():
   var attacks = get_node("attack")
   attacks.set_player(player)
   attacks.connect("attack_animation", self, "_on_attack_animation")
-  connect("change_state", get_node("animation"), "_on_change_state")
+  connect("change_state", get_node("player_display"), "_on_change_state")
   set_process(true)
   print("PLAYER ", player, " READY")
   set_state('idle')

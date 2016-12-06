@@ -24,13 +24,16 @@ func _on_press_action(action):
   else:
     handle_action(pl, act)
 
+func get_square_pos(pl, n):
+  var x = pl * 512 + 128 + (n % COLS) * 128
+  var y = 6 * 64 + 128 * floor(n / COLS)
+  return Vector2(x, y)
+
 func add_char_item(pl, n):
   var name = chars[n].get_name()
   var char = CHAR_ITEM.instance()
-  var x = pl * 512 + 128 + (n % COLS) * 128
-  var y = 5 * 64 + 128 * floor(n / COLS)
   lists[n].add_child(char)
-  char.set_pos(Vector2(x, y))
+  char.set_pos(get_square_pos(pl, n))
   char.set_char(name)
 
 func move_selection(pl, dir):
@@ -60,6 +63,4 @@ func handle_action(pl, act):
 func update_cursor_pos(pl):
   var cursor = cursors[pl]
   var n = selection[pl]
-  var x = pl * 512 + 128 + (n % COLS) * 128
-  var y = 5 * 64 + 128 * floor(n / COLS)
-  cursor.set_pos(Vector2(x, y))
+  cursor.set_pos(get_square_pos(pl, n))
