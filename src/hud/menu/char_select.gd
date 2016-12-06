@@ -4,6 +4,7 @@ extends "res://hud/menu/screen.gd"
 const CHAR_ITEM = preload("res://hud/menu/char_select/char_item.tscn")
 const COLS = 3
 
+#onready var setup = get_node("/root/setup")
 onready var chars = get_node("/root/database/chars").get_children()
 onready var chars_display = [ get_node("char_display1"), get_node("char_display2") ]
 onready var cursors = [ get_node("cursor1"), get_node("cursor2") ]
@@ -55,17 +56,18 @@ func move_selection(pl, dir):
 
 func handle_action(pl, act):
   if act == 4:
-    pass
-  elif act == 6:
+    var chara = chars[selection[pl]]
+    setup.set_player(pl - 1, chara.get_name())
+  elif act == 5:
     selection[0] = 0
     selection[1] = 0
     emit_signal("change_screen", 0)
-  elif act == 7:
+  elif act == 6:
     pass
     #selection[0] = 0
     #selection[1] = 0
     #emit_signal("change_screen", 0)
-  elif act == 8:
+  elif act == 7:
     pass
 
 func update_cursor_pos(pl):
