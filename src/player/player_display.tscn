@@ -56,7 +56,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 1 ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 0, 1 ] }
 
 [sub_resource type="Animation" id=6]
 
@@ -112,7 +112,6 @@ transform/pos = Vector2( 0, -80 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 6
-frame = 2
 script/script = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
