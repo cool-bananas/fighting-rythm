@@ -2,8 +2,12 @@
 extends Node
 
 signal players_are_set ()
+signal stop_controller ()
 
 var players
+
+func _ready():
+  connect("stop_controller", self, "_on_stop")
 
 func set_players(players_node):
   players = players_node
@@ -21,3 +25,11 @@ func get_opponent(player):
 
 func is_input():
   return false
+
+func stop():
+  set_process(false)
+  set_fixed_process(false)
+  emit_signal("stop_controller")
+
+func _on_stop():
+  pass

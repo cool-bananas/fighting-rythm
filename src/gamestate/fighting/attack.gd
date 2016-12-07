@@ -19,6 +19,10 @@ func _ready():
 func load_input():
 	input.connect("press_action", self, "_on_press_action")
 
+func _on_stop():
+  if input.is_connected("press_action", self, "_on_press_action"):
+    input.disconnect("press_action", self, "_on_press_action")
+
 func set_each_player():
   for pl in get_players().get_children():
     if pl.which_player() == 1:

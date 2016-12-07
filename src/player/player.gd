@@ -40,13 +40,16 @@ func _process(delta):
     var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
     swoosh.swoosh(pos, "down")
 
+func _on_char_ko():
+  print("I AM FUCKING DEAD")
+
 func set_chara(name):
   yield(self, "player_ready")
   var chars = database.get_node("chars")
   for char in chars.get_children():
     if char.get_name() == name:
       chara = char.duplicate()
-      print(chara)
+      add_child(chara)
 
 func get_chara():
   return chara

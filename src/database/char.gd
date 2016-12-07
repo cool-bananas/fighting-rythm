@@ -9,6 +9,7 @@ export (int) var hp
 export (float) var speed
 export (float) var power
 
+var player
 var damage = 0
 
 func get_hp():
@@ -26,10 +27,20 @@ func get_power():
 func get_current_hp():
   return hp - damage
 
+func reset_health():
+  damage = 0
+
+func set_player(pl):
+  player = pl
+
+func get_player():
+  return player
+
 func take_dmg(dmg):
   print("life_change!")
   damage += dmg
   emit_signal("life_change")
   if damage >= hp:
     damage = hp
-    emit_signal("char_ko", get_name())
+    print("CHAR IS DEAD")
+    emit_signal("char_ko")
