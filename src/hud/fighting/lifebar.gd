@@ -31,6 +31,9 @@ func load_character(character):
   get_node("name").set_text(chara.get_name())
   chara.connect("life_change", self, "_on_life_change")
 
+func set_player(pl):
+  get_node("player").set_text("P" + str(pl))
+
 func _on_life_change():
   var health = 1.0 * chara.get_hp()
   var current = 1.0 * chara.get_current_hp()

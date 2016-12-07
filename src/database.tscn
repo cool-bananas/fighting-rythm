@@ -10,7 +10,7 @@
 
 script/script = ExtResource( 1 )
 name = "Skatista"
-hp = 256
+hp = 300
 speed = 120.0
 power = 20.0
 

@@ -5,7 +5,7 @@ onready var animation = get_node("animation")
 onready var sfx = get_node("/root/main/SFX")
 
 func _on_press_action(action):
-  sfx.play("confirm")
+  sfx.play("press_any")
   animation.play("accept")
   unfocus()
   yield(animation, "finished")

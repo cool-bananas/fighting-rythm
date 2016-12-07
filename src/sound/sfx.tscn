@@ -1,24 +1,34 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://assets/sfx/attack_b.smp" type="Sample" id=1]
 [ext_resource path="res://assets/sfx/attack_c.smp" type="Sample" id=2]
 [ext_resource path="res://assets/sfx/cancel.smp" type="Sample" id=3]
-[ext_resource path="res://assets/sfx/press_any.smp" type="Sample" id=4]
-[ext_resource path="res://assets/sfx/hit.smp" type="Sample" id=5]
-[ext_resource path="res://assets/sfx/jump.smp" type="Sample" id=6]
-[ext_resource path="res://assets/sfx/move_cursor.smp" type="Sample" id=7]
-[ext_resource path="res://assets/sfx/ok.smp" type="Sample" id=8]
+[ext_resource path="res://assets/sfx/confirm_charas.smp" type="Sample" id=4]
+[ext_resource path="res://assets/sfx/fall.smp" type="Sample" id=5]
+[ext_resource path="res://assets/sfx/fight2.smp" type="Sample" id=6]
+[ext_resource path="res://assets/sfx/hit.smp" type="Sample" id=7]
+[ext_resource path="res://assets/sfx/jump.smp" type="Sample" id=8]
+[ext_resource path="res://assets/sfx/move_cursor.smp" type="Sample" id=9]
+[ext_resource path="res://assets/sfx/press_any.smp" type="Sample" id=10]
+[ext_resource path="res://assets/sfx/stagger.smp" type="Sample" id=11]
+[ext_resource path="res://assets/sfx/strong.smp" type="Sample" id=12]
+[ext_resource path="res://assets/sfx/weak.smp" type="Sample" id=13]
 
 [sub_resource type="SampleLibrary" id=1]
 
 samples/attack_b = { "db":0.0, "pitch":1.0, "sample":ExtResource( 1 ) }
 samples/attack_c = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
 samples/cancel = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
-samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
-samples/hit = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
-samples/jump = { "db":0.0, "pitch":1.0, "sample":ExtResource( 6 ) }
-samples/move_cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 7 ) }
-samples/ok = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+samples/confirm_charas = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/fall = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/fight2 = { "db":0.0, "pitch":1.0, "sample":ExtResource( 6 ) }
+samples/hit = { "db":0.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/jump = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+samples/move_cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 9 ) }
+samples/press_any = { "db":0.0, "pitch":1.0, "sample":ExtResource( 10 ) }
+samples/stagger = { "db":0.0, "pitch":1.0, "sample":ExtResource( 11 ) }
+samples/strong = { "db":0.0, "pitch":1.0, "sample":ExtResource( 12 ) }
+samples/weak = { "db":0.0, "pitch":1.0, "sample":ExtResource( 13 ) }
 
 [node name="SFX" type="SamplePlayer"]
 

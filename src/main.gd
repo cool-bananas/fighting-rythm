@@ -19,7 +19,7 @@ func change_gamestate(next_gs):
     get_tree().quit()
 
   if current:
-    gamestate.get_node(current).queue_free()
+    gamestate.get_node(current).free()
 
   current = next_gs
   gamescene = gs.instance()

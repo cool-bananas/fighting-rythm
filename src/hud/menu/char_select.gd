@@ -45,7 +45,7 @@ func move_selection(pl, dir):
   if not selecting[pl]:
     return
 
-  sfx.play("move_cursor")  
+  sfx.play("move_cursor")
   var n = chars.size()
   if dir == 0:
     selection[pl] += 2 * n - COLS
@@ -94,7 +94,7 @@ func select_character(pl):
   var chara = chars[selection[pl]]
   var labels = cursors[pl].get_node("labels").get_children()
   var cursor_animation = cursors[pl].get_child(0)
-  sfx.play("confirm")
+  sfx.play("confirm_charas")
   setup.set_player(pl + 1, chara.get_name())
   cursor_animation.stop()
   cursor_animation.play("select")
@@ -118,7 +118,8 @@ func set_selection():
     cursor_animation.stop()
     cursor_animation.play("cursor")
     selecting[pl] = true
-    selection[pl] = 0
+    #selection[pl] = 0
+    update_cursor_pos(pl)
     for n in range(2):
       labels[n].hide()
 
@@ -129,7 +130,7 @@ func go_back():
   emit_signal("change_screen", -1)
 
 func confirm():
-  sfx.play("ok")
+  sfx.play("confirm_charas")
   unfocus()
   emit_signal("change_screen", 1)
   pass

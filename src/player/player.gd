@@ -35,7 +35,7 @@ func _ready():
 
 func _process(delta):
   if get_pos().y >= FLOOR and state == 'jump':
-    sfx.play("jump")
+    sfx.play("fall")
     set_state('idle')
     var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
     swoosh.swoosh(pos, "down")
@@ -126,7 +126,7 @@ func stagger(dir, strength):
   var t = .3 + (strength + 1) * 1/60
   var acc = WALK_ACC * 0.5 * dir * (strength + 1) * (strength + 1)
   var offset = Vector2(-dir * 64, -16)
-  sfx.play("hit")
+  sfx.play("stagger")
   tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, t, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
   tween.start()
 

@@ -50,17 +50,17 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0.5 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -4, -147.6, 60, -147.6, 60, -51.6, -4, -51.6 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 44, -163.6, 76, -115.6, 76, -83.6, 44, -51.6, -20, -83.6, -20, -99.6 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
@@ -84,14 +84,12 @@ autoplay = ""
 
 [node name="player_display" parent="." instance=ExtResource( 2 )]
 
-visibility/visible = false
 frame = 5
 
 [node name="weak" type="Area2D" parent="."]
 
-visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 20, 19.6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -101,7 +99,7 @@ angular_damp = 1.0
 collision/layers = 72
 collision/mask = 0
 script/script = ExtResource( 3 )
-damage = 10
+damage = 30.0
 strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="weak"]
@@ -114,9 +112,8 @@ trigger = false
 
 [node name="strong" type="Area2D" parent="."]
 
-visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -126,7 +123,7 @@ angular_damp = 1.0
 collision/layers = 72
 collision/mask = 150
 script/script = ExtResource( 3 )
-damage = 40.0
+damage = 15.0
 strength = 1
 
 [node name="area" type="CollisionPolygon2D" parent="strong"]
@@ -140,7 +137,7 @@ trigger = false
 [node name="bullet" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -50.4, 13.2 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -150,7 +147,7 @@ angular_damp = 1.0
 collision/layers = 72
 collision/mask = 0
 script/script = ExtResource( 3 )
-damage = 15.0
+damage = 20.0
 strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="bullet"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://hud/fighting/lifebar.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/header24.fnt" type="BitmapFont" id=2]
 
 [node name="lifebar" type="Polygon2D"]
 
@@ -44,10 +45,34 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
+margin/left = 64.0
+margin/top = 32.0
+margin/right = 144.0
+margin/bottom = 64.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+text = "Name"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="player" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 16.0
 margin/top = 32.0
-margin/right = 96.0
-margin/bottom = 57.0
+margin/right = 48.0
+margin/bottom = 64.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+text = "P1"
+align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
