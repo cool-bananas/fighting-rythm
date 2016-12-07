@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://assets/img/face_cursor.tex" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/header36.fnt" type="BitmapFont" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "cursor"
+length = 0.3
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 0, 1 ] }
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "select"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visibility/visible")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ true, false, true, false, true, false, true, false, true, false, true ] }
+
+[node name="cursor" type="Sprite"]
+
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="animation" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/cursor = SubResource( 1 )
+anims/select = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "cursor"
+
+[node name="colors" type="Node2D" parent="."]
+
+[node name="color1" type="Polygon2D" parent="colors"]
+
+visibility/visible = false
+polygon = Vector2Array( -48, -48, 48, -48, 48, 48, -48, 48 )
+uv = Vector2Array(  )
+color = Color( 0.406793, 0.792969, 0.167267, 0.251373 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="color2" type="Polygon2D" parent="colors"]
+
+visibility/visible = false
+polygon = Vector2Array( -48, -48, 48, -48, 48, 48, -48, 48 )
+uv = Vector2Array(  )
+color = Color( 0.792969, 0.167267, 0.167267, 0.251373 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="labels" type="Node2D" parent="."]
+
+[node name="p1" type="Label" parent="labels"]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -32.0
+margin/top = -32.0
+margin/right = 32.0
+margin/bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "P1"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="p2" type="Label" parent="labels"]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -32.0
+margin/top = -32.0
+margin/right = 32.0
+margin/bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "P2"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
