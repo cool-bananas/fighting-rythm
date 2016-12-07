@@ -6,6 +6,7 @@ signal change_state (st)
 signal player_stagger (player, strength)
 signal player_attack (player, strength)
 
+onready var SWOOSH = get_node("/root/FX/SWOOSH")
 onready var database = get_node("/root/database")
 onready var attacks = get_node("attack")
 onready var timer = get_node("timer")
