@@ -4,7 +4,7 @@ extends "res://hud/menu/screen.gd"
 const CHAR_ITEM = preload("res://hud/menu/char_select/char_item.tscn")
 const COLS = 3
 
-#onready var setup = get_node("/root/setup")
+onready var sfx = get_node("/root/main/SFX")
 onready var chars = get_node("/root/database/chars").get_children()
 onready var chars_display = [ get_node("char_display1"), get_node("char_display2") ]
 onready var cursors = [ get_node("cursor1"), get_node("cursor2") ]
@@ -92,16 +92,17 @@ func select_character(pl):
   var chara = chars[selection[pl]]
   var labels = cursors[pl].get_node("labels").get_children()
   var cursor_animation = cursors[pl].get_child(0)
+  sfx.play("confirm")
   setup.set_player(pl + 1, chara.get_name())
   cursor_animation.stop()
   cursor_animation.play("select")
   labels[pl].show()
   selecting[pl] = false
-  #play se: ok
 
 func unselect_character(pl):
   var cursor_animation = cursors[pl].get_child(0)
   var labels = cursors[pl].get_node("labels").get_children()
+  sfx.play("cancel")
   cursor_animation.stop()
   cursor_animation.play("cursor")
   labels[pl].hide()
@@ -109,6 +110,7 @@ func unselect_character(pl):
   #play se: cancel
 
 func go_back():
+  sfx.play("cancel")
   selection[0] = 0
   selection[1] = 0
   emit_signal("change_screen", -1)
