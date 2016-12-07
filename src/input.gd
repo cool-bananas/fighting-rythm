@@ -55,6 +55,7 @@ func get_held_actions(e):
       idle = true
     if key == "p2_quit":
       if idle: emit_signal("hold_action", -2)
+      idle = true
 
 func get_pressed_action(e):
   for key in KEYMAP:

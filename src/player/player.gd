@@ -82,8 +82,8 @@ func jump():
 func idle():
   print("CALLING IDLE")
   print("Current state: ", get_state())
-  if state == 'walk':
-    set_state('idle')
+ # if state == 'walk':
+   # set_state('idle')
 
 func attack(type):
   if state == 'stagger' or state == 'attack_a' or state == 'attack_b' or state == 'attack_c':
