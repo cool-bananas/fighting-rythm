@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=1]
 
-[ext_resource path="res://assets/img/Skatista.tex" type="Texture" id=1]
+[ext_resource path="res://assets/img/Coxinha.tex" type="Texture" id=1]
 [ext_resource path="res://player/animation.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]

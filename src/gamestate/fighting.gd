@@ -15,6 +15,8 @@ func _ready():
 	print("Getting fight gamestate ready")
 	load_player(1)
 	load_player(2)
+	if setup.get_player(1) == setup.get_player(2):
+		players.get_child(1).get_node("player_display").set_modulate(Color(64.0/256, 222.0/256, 252.0/256))
 	load_background()
 	finish_preparations()
 
