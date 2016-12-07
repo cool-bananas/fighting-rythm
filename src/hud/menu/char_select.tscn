@@ -12,11 +12,11 @@ script/script = ExtResource( 1 )
 
 [node name="cursor1" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 384, 384 )
+transform/pos = Vector2( 448, 384 )
 
 [node name="cursor2" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 512, 384 )
+transform/pos = Vector2( 576, 384 )
 
 [node name="char_display1" parent="." instance=ExtResource( 3 )]
 

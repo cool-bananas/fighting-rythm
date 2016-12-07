@@ -30,7 +30,7 @@ func _on_press_action(action):
     handle_action(pl, act)
 
 func get_square_pos(n):
-  var x = 6 * 64 + (n % COLS) * 128
+  var x = 7 * 64 + (n % COLS) * 128
   var y = 6 * 64 + 128 * floor(n / COLS)
   return Vector2(x, y)
 
@@ -83,6 +83,7 @@ func update_cursor_pos(pl):
   var cursor = cursors[pl]
   var n = selection[pl]
   cursor.set_pos(get_square_pos(n))
+  sfx.play("move_cursor")
 
 func update_char_display(pl):
   var n = selection[pl]
