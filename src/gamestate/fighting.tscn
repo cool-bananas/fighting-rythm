@@ -17,26 +17,38 @@ points = Vector2Array( -64, 704, -64, -64, 0, 0, 0, 544 )
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 1376, 544, 1440, 704, -64, 704, 0, 544 )
+points = Vector2Array( 1408, 544, 1472, 704, -64, 704, 0, 544 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 1440, -64, 1440, 704, 1376, 544, 1376, 0 )
+points = Vector2Array( 1472, -64, 1472, 704, 1408, 544, 1408, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, -64, -64, 1440, -64, 1376, 0 )
+points = Vector2Array( 0, 0, -64, -64, 1472, -64, 1408, 0 )
 
 [node name="fighting" type="Node2D"]
 
 script/script = ExtResource( 1 )
 name = "fighting"
 
+[node name="background" type="Node2D" parent="."]
+
+transform/pos = Vector2( 704, 320 )
+
+[node name="bg0" type="Sprite" parent="background"]
+
+[node name="bg1" type="Sprite" parent="background"]
+
+[node name="bg2" type="Sprite" parent="background"]
+
+[node name="bg3" type="Sprite" parent="background"]
+
 [node name="scenario" type="Polygon2D" parent="."]
 
-polygon = Vector2Array( -64, 544, 1440, 544, 1440, 608, -64, 608 )
+polygon = Vector2Array( -64, 544, 1472, 544, 1472, 608, -64, 608 )
 uv = Vector2Array(  )
 color = Color( 0.125, 0.125, 0.125, 1 )
 vertex_colors = ColorArray(  )
@@ -74,14 +86,14 @@ __meta__ = { "_edit_group_":true, "_edit_lock_":true }
 [node name="box" type="CollisionPolygon2D" parent="limits"]
 
 build_mode = 0
-polygon = Vector2Array( 1376, 544, 0, 544, 0, 0, -64, -64, -64, 704, 1440, 704 )
+polygon = Vector2Array( 1408, 544, 0, 544, 0, 0, -64, -64, -64, 704, 1472, 704 )
 shape_range = Vector2( 0, 1 )
 trigger = false
 
 [node name="box1" type="CollisionPolygon2D" parent="limits"]
 
 build_mode = 0
-polygon = Vector2Array( -64, -64, 1440, -64, 1440, 704, 1376, 544, 1376, 0, 0, 0 )
+polygon = Vector2Array( -64, -64, 1472, -64, 1472, 704, 1408, 544, 1408, 0, 0, 0 )
 shape_range = Vector2( 2, 3 )
 trigger = false
 
@@ -115,7 +127,7 @@ script/script = ExtResource( 7 )
 
 [node name="camera" type="Camera2D" parent="controllers"]
 
-transform/pos = Vector2( 736, 512 )
+transform/pos = Vector2( 704, 512 )
 offset = Vector2( 0, -128 )
 anchor_mode = 1
 rotating = false

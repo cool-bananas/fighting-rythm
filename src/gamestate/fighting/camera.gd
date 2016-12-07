@@ -6,6 +6,9 @@ const MAX_DISTANCE = 924-128
 var position = Vector2()
 var players
 
+func is_input():
+  return false
+
 func set_players(players_node):
   players = players_node
   make_current()

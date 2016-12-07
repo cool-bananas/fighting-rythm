@@ -8,6 +8,9 @@ onready var input = get_node("/root/input")
 var player1
 var player2
 
+func is_input():
+  return true
+  
 func _ready():
   yield(self, "players_are_set")
   set_each_player()
