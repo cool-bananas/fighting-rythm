@@ -46,7 +46,7 @@ onready var hitboxes = {
 var player
 
 func _ready():
-  var test_sprite = get_node("test_sprite")
+  var test_sprite = get_node("player_display")
   if test_sprite:
     test_sprite.hide()
   reset_hitbox_layers()
