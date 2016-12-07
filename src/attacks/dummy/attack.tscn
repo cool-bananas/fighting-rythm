@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://attacks/attack.gd" type="Script" id=1]
 [ext_resource path="res://player/player_display.tscn" type="PackedScene" id=2]
 [ext_resource path="res://attacks/hitbox.gd" type="Script" id=3]
+[ext_resource path="res://assets/img/skate_wheel.tex" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -10,13 +11,33 @@ resource/name = "bullet"
 length = 1.0
 loop = false
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("bullet/area:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0.3, 0.8 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -50.4, 13.2 ), Vector2( 377.12, 13.2 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("bullet/area/can:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.3, 0.4, 0.6, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0, 1.0, 0.0 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("bullet:collision/mask")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0.6 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 
 [sub_resource type="Animation" id=2]
 
 resource/name = "strong"
-length = 0.5
+length = 0.8
 loop = false
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("strong:collision/mask")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0.5 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 
 [sub_resource type="Animation" id=3]
 
@@ -34,15 +55,15 @@ tracks/0/keys = { "times":FloatArray( 0.5 ), "transitions":FloatArray( 1 ), "upd
 custom_solver_bias = 0.0
 points = Vector2Array( -4, -147.6, 60, -147.6, 60, -51.6, -4, -51.6 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 44, -163.6, 76, -115.6, 76, -83.6, 44, -51.6, -20, -83.6, -20, -99.6 )
+points = Vector2Array( 44, -163.6, 92, -147.6, 92, -51.6, 44, -19.6, -20, -19.6, -20, -163.6 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
+points = Vector2Array( 28, -131.6, 98.4, -125.2, 98.4, -109.2, 28, -99.6 )
 
 [node name="attack" type="Node2D"]
 
@@ -63,13 +84,10 @@ autoplay = ""
 
 [node name="player_display" parent="." instance=ExtResource( 2 )]
 
-visibility/visible = false
-transform/scale = Vector2( 1, 1 )
-frame = 5
+frame = 22
 
 [node name="weak" type="Area2D" parent="."]
 
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 20, 19.6 )
@@ -96,7 +114,7 @@ trigger = false
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -104,7 +122,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 72
-collision/mask = 150
+collision/mask = 0
 script/script = ExtResource( 3 )
 damage = 40.0
 strength = 1
@@ -113,7 +131,7 @@ strength = 1
 
 transform/pos = Vector2( -12, 19.6 )
 build_mode = 0
-polygon = Vector2Array( 44, -163.6, 76, -115.6, 76, -83.6, 44, -51.6, -20, -83.6, -20, -99.6 )
+polygon = Vector2Array( 44, -163.6, 92, -147.6, 92, -51.6, 44, -19.6, -20, -19.6, -20, -163.6 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -122,26 +140,32 @@ trigger = false
 editor/display_folded = true
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 206.112, 13.2 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 72
-collision/mask = 150
+collision/mask = 0
 script/script = ExtResource( 3 )
 damage = 15.0
 strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="bullet"]
 
-transform/pos = Vector2( -12, 19.6 )
+transform/pos = Vector2( 206.112, 13.2 )
+transform/scale = Vector2( 1, 1 )
 build_mode = 0
-polygon = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
+polygon = Vector2Array( 28, -131.6, 98.4, -125.2, 98.4, -109.2, 28, -99.6 )
 shape_range = Vector2( 0, 0 )
 trigger = false
+
+[node name="can" type="Sprite" parent="bullet/area"]
+
+transform/pos = Vector2( 94.88, -117.2 )
+texture = ExtResource( 4 )
 
 
 [editable path="player_display"]

@@ -100,8 +100,8 @@ func attack(type):
     emit_signal("player_attack", self, "bullet")
 
 func stagger(dir, strength):
-  var t = .05 + (strength + 1) * 1/60
-  var acc = WALK_ACC * 1 * dir * (strength + 1) * (strength + 1)
+  var t = .3 + (strength + 1) * 1/60
+  var acc = WALK_ACC * 0.5 * dir * (strength + 1) * (strength + 1)
   tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, t, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
   tween.start()
   set_state('stagger')
@@ -141,8 +141,14 @@ func take_dmg(damage, strength):
     get_chara().take_dmg(damage)
 
 func _on_attack_animation(type):
+  if type == 'weak':
+    var acc = WALK_ACC * .5
+    if facing == 'left':
+      acc *= -1
+    tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, .1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+    tween.start()
   if type == 'strong':
-    var acc = WALK_ACC * 2
+    var acc = WALK_ACC * 2.5
     if facing == 'left':
       acc *= -1
     tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, .1, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
