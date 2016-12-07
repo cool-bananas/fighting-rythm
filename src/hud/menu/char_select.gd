@@ -45,6 +45,7 @@ func move_selection(pl, dir):
   if not selecting[pl]:
     return
 
+  sfx.play("move_cursor")  
   var n = chars.size()
   if dir == 0:
     selection[pl] += 2 * n - COLS
@@ -83,7 +84,6 @@ func update_cursor_pos(pl):
   var cursor = cursors[pl]
   var n = selection[pl]
   cursor.set_pos(get_square_pos(n))
-  sfx.play("move_cursor")
 
 func update_char_display(pl):
   var n = selection[pl]
