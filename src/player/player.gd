@@ -86,7 +86,7 @@ func idle():
     set_state('idle')
 
 func attack(type):
-  if state == 'stagger' or state == 'attack':
+  if state == 'stagger' or state == 'attack_a' or state == 'attack_b' or state == 'attack_c':
     return
 
   if type == 1:
