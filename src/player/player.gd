@@ -35,7 +35,7 @@ func _ready():
 
 func _process(delta):
   if get_pos().y >= FLOOR and state == 'jump':
-    sfx.play("land")
+    sfx.play("jump")
     set_state('idle')
     var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
     swoosh.swoosh(pos, "down")
@@ -72,6 +72,7 @@ func is_facing(dir):
 
 func walk(dir):
   if state == 'stagger':
+
     return
   if state != 'attack_a' and state != 'attack_b' and state != 'attack_c' :
     accelerate(WALK_ACC * dir)

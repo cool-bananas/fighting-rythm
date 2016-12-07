@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://assets/sfx/attack_b.smp" type="Sample" id=1]
 [ext_resource path="res://assets/sfx/attack_c.smp" type="Sample" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/sfx/hit.smp" type="Sample" id=5]
 [ext_resource path="res://assets/sfx/jump.smp" type="Sample" id=6]
 [ext_resource path="res://assets/sfx/land.smp" type="Sample" id=7]
+[ext_resource path="res://assets/sfx/ok.smp" type="Sample" id=8]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -17,6 +18,7 @@ samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
 samples/hit = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
 samples/jump = { "db":0.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 samples/land = { "db":0.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/ok = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 
 [node name="SFX" type="SamplePlayer"]
 

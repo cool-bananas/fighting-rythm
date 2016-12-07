@@ -116,6 +116,7 @@ func go_back():
   emit_signal("change_screen", -1)
 
 func confirm():
+  sfx.play("ok")
   unfocus()
   emit_signal("change_screen", 1)
   pass
