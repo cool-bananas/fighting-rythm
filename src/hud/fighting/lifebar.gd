@@ -14,7 +14,19 @@ var polygon = [
 ]
 var last_percentage = 1.0
 
+func init_values():
+  polygon = [
+    Vector2(0, 0),
+    Vector2(236, 0),
+    Vector2(244, 24),
+    Vector2(8, 24),
+  ]
+  bar.show()
+  bar.set_polygon(polygon)
+  last_percentage = 1.0
+
 func load_character(character):
+  init_values()
   chara = character
   get_node("name").set_text(chara.get_name())
   chara.connect("life_change", self, "_on_life_change")
@@ -36,6 +48,6 @@ func change_life(percentage):
     tween.start()
 
 func rawset_bar(percentage):
-  polygon[1] = Vector2(236 * percentage, 0)
-  polygon[2] = Vector2(236 * percentage + 8, 24)
+  polygon[1].x = 236 * percentage
+  polygon[2].x = 236 * percentage + 8
   bar.set_polygon(polygon)

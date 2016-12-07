@@ -40,13 +40,26 @@ func _process(delta):
     var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
     swoosh.swoosh(pos, "down")
 
+func _on_char_ko():
+  print("I AM FUCKING DEAD")
+  set_process(false)
+  set_state('fall')
+  var dir = 1
+  if speed.x < 0:
+    dir *= -1
+  var acc = WALK_ACC * 2.5 * dir
+  if facing == 'left':
+    acc *= -1
+  tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, .5, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+  tween.start()
+
 func set_chara(name):
   yield(self, "player_ready")
   var chars = database.get_node("chars")
   for char in chars.get_children():
     if char.get_name() == name:
       chara = char.duplicate()
-      print(chara)
+      add_child(chara)
 
 func get_chara():
   return chara
@@ -71,8 +84,7 @@ func is_facing(dir):
   return facing == dir
 
 func walk(dir):
-  if state == 'stagger':
-
+  if state == 'stagger' or state == 'fall':
     return
   if state != 'attack_a' and state != 'attack_b' and state != 'attack_c' :
     accelerate(WALK_ACC * dir)
@@ -80,7 +92,7 @@ func walk(dir):
       set_state('walk')
 
 func jump():
-  if state == 'stagger':
+  if state == 'stagger' or state == 'fall':
     return
   if state == 'idle' or state == 'walk':
     if get_pos().y >= FLOOR:
@@ -94,7 +106,7 @@ func idle():
     set_state('idle')
 
 func attack(type):
-  if state == 'stagger' or state == 'attack_a' or state == 'attack_b' or state == 'attack_c':
+  if state == 'stagger' or state == 'attack_a' or state == 'attack_b' or state == 'attack_c' or state == 'fall':
     return
 
   if type == 1:
@@ -124,7 +136,8 @@ func stagger(dir, strength):
     swoosh.swoosh(display.get_global_pos() + offset, "right")
   set_state('stagger')
   yield(tween, "tween_complete")
-  set_state('idle')
+  if state != 'fall':
+    set_state('idle')
 
 func set_state(st):
   state = st

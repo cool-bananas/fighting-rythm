@@ -10,7 +10,7 @@ var player2
 
 func is_input():
   return true
-  
+
 func _ready():
   yield(self, "players_are_set")
   set_each_player()
@@ -19,6 +19,12 @@ func _ready():
 func load_input():
   input.connect("hold_action", self, "_on_hold_action")
   input.connect("press_action", self, "_on_press_action")
+
+func _on_stop():
+  if input.is_connected("hold_action", self, "_on_hold_action"):
+    input.disconnect("hold_action", self, "_on_hold_action")
+  if input.is_connected("press_action", self, "_on_press_action"):
+    input.disconnect("press_action", self, "_on_press_action")
 
 func set_each_player():
   for pl in get_players().get_children():

@@ -11,8 +11,9 @@ func _ready():
   for m in menus:
     m.connect("change_screen", self, "_on_change_screen")
 
-func _on_gamestate_ready():
+func _on_gamestate_ready(st):
   print("READY")
+  focus = st
   for m in menus:
     m.hide()
     m.unfocus()
