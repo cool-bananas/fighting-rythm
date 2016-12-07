@@ -3,7 +3,9 @@ extends Control
 
 onready var menus = get_node("screens").get_children()
 onready var fade = get_node("/root/main/FX/fade")
+onready var main = get_node("/root/main")
 var focus = 0
+var current
 
 func _ready():
   for m in menus:
@@ -21,12 +23,27 @@ func _on_change_screen(idx):
   set_focus(idx)
 
 func set_focus(idx):
-  menus[focus].unfocus()
+  var old_focus = focus
+  focus += idx
+  print(old_focus)
+  print(focus)
+  if focus >= menus.size():
+    go_to_fighting()
+    return
+  menus[old_focus].unfocus()
+  print(old_focus, " unfocused")
   fade.start(1.5)
   yield(fade, "fade_middle")
   for m in menus:
     m.hide()
-  menus[idx].show()
+  menus[focus].show()
   yield(fade, "fade_end")
-  menus[idx].focus()
-  focus = idx
+  menus[focus].focus()
+
+func go_to_fighting():
+  fade.start(1.2)
+  yield(fade, "fade_middle")
+  for m in menus:
+    m.hide()
+    m.unfocus()
+  main.change_gamestate("fighting")

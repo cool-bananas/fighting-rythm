@@ -8,7 +8,6 @@ onready var gamestate = get_node("GAME")
 var current
 
 func _ready():
-  var gs = load(GAMESTATES + initial + '.tscn')
   randomize()
   change_gamestate(initial)
 

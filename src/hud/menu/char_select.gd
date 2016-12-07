@@ -62,7 +62,7 @@ func handle_action(pl, act):
   if act == 4:
     if selecting[pl]:
       select_character(pl)
-    elif not selecting[pl + 1 % 2]:
+    elif not selecting[int(pl + 1) % 2]:
       confirm()
   elif act == 5:
     if selecting[pl]:
@@ -71,9 +71,6 @@ func handle_action(pl, act):
       unselect_character(pl)
   elif act == 6:
     pass
-    #selection[0] = 0
-    #selection[1] = 0
-    #emit_signal("change_screen", 0)
   elif act == 7:
     pass
 
@@ -88,31 +85,34 @@ func update_cursor_pos(pl):
 
 func update_char_display(pl):
   var n = selection[pl]
-  print(pl, n)
   chars_display[pl].set_char(chars[n])
   chars_display[pl].set_player(pl)
 
 func select_character(pl):
   var chara = chars[selection[pl]]
+  var labels = cursors[pl].get_node("labels").get_children()
   var cursor_animation = cursors[pl].get_child(0)
   setup.set_player(pl + 1, chara.get_name())
   cursor_animation.stop()
   cursor_animation.play("select")
+  labels[pl].show()
   selecting[pl] = false
   #play se: ok
 
 func unselect_character(pl):
   var cursor_animation = cursors[pl].get_child(0)
+  var labels = cursors[pl].get_node("labels").get_children()
   cursor_animation.stop()
   cursor_animation.play("cursor")
+  labels[pl].hide()
   selecting[pl] = true
   #play se: cancel
 
 func go_back():
   selection[0] = 0
   selection[1] = 0
-  emit_signal("change_screen", 0)
+  emit_signal("change_screen", -1)
 
 func confirm():
-  #go to battle
+  emit_signal("change_screen", 1)
   pass
