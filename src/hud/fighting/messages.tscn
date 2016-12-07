@@ -63,6 +63,7 @@ centered = false
 
 [node name="p2_wins" type="Sprite" parent="."]
 
+visibility/visible = false
 texture = ExtResource( 3 )
 centered = false
 
