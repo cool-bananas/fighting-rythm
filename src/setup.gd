@@ -1,8 +1,8 @@
 
 extends Node
 
-var player1 = 'dummy'
-var player2 = 'dummy'
+var player1 = 'Coxinha'
+var player2 = 'Coxinha'
 var background = 'none'
 
 func set_player(pl, chara):
