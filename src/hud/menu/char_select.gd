@@ -11,6 +11,7 @@ onready var cursors = [ get_node("cursor1"), get_node("cursor2") ]
 onready var list = get_node("list")
 var selecting = [ true, true ]
 var selection = [ 0, 0 ]
+var initialised = false
 
 func _ready():
   for n in range(chars.size()):
@@ -109,6 +110,17 @@ func unselect_character(pl):
   selecting[pl] = true
   #play se: cancel
 
+func set_selection():
+  for pl in range(2):
+    var cursor_animation = cursors[pl].get_child(0)
+    var labels = cursors[pl].get_node("labels").get_children()
+    cursor_animation.stop()
+    cursor_animation.play("cursor")
+    selecting[pl] = true
+    selection[pl] = 0
+    for n in range(2):
+      labels[n].hide()
+
 func go_back():
   sfx.play("cancel")
   selection[0] = 0
@@ -120,3 +132,6 @@ func confirm():
   unfocus()
   emit_signal("change_screen", 1)
   pass
+
+func on_focus():
+  set_selection()
