@@ -6,7 +6,7 @@ signal change_state (st)
 signal player_stagger (player, strength)
 signal player_attack (player, strength)
 
-onready var SWOOSH = get_node("/root/FX/SWOOSH")
+onready var swoosh = get_node("/root/main/FX/SWOOSH")
 onready var database = get_node("/root/database")
 onready var attacks = get_node("attack")
 onready var timer = get_node("timer")
@@ -77,12 +77,11 @@ func jump():
   if state == 'stagger':
     return
   if state == 'idle' or state == 'walk':
+    swoosh.swoosh(get_node("player_display").get_pos(), "down")
     accelerate(JUMP_ACC)
     set_state('jump')
 
 func idle():
-  print("CALLING IDLE")
-  print("Current state: ", get_state())
   if state == 'walk':
     set_state('idle')
 
