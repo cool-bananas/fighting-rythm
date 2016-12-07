@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://attacks/attack.gd" type="Script" id=1]
 [ext_resource path="res://player/player_display.tscn" type="PackedScene" id=2]
 [ext_resource path="res://attacks/hitbox.gd" type="Script" id=3]
+[ext_resource path="res://assets/img/skate_wheel.tex" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -24,7 +25,7 @@ tracks/2/type = "value"
 tracks/2/path = NodePath("bullet:collision/mask")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0.6 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
+tracks/2/keys = { "times":FloatArray( 0.7 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 
 [sub_resource type="Animation" id=2]
 
@@ -138,29 +139,33 @@ trigger = false
 
 [node name="bullet" type="Area2D" parent="."]
 
-editor/display_folded = true
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 10 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -12, 19.6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -50.4, 13.2 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 72
-collision/mask = 150
+collision/mask = 0
 script/script = ExtResource( 3 )
 damage = 15.0
 strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="bullet"]
 
-transform/pos = Vector2( -12, 19.6 )
+transform/pos = Vector2( -50.4, 13.2 )
 build_mode = 0
 polygon = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
 shape_range = Vector2( 0, 0 )
 trigger = false
+
+[node name="can" type="Sprite" parent="bullet/area"]
+
+visibility/opacity = 0.0
+transform/pos = Vector2( 47, -117 )
+texture = ExtResource( 4 )
 
 
 [editable path="player_display"]
