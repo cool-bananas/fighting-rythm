@@ -34,7 +34,9 @@ func _ready():
 
 func _process(delta):
   if get_pos().y >= FLOOR and state == 'jump':
-    set_state('idle')
+      set_state('idle')
+      var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
+      swoosh.swoosh(pos, "down")
 
 func set_chara(name):
   yield(self, "player_ready")
@@ -78,7 +80,7 @@ func jump():
   if state == 'stagger':
     return
   if state == 'idle' or state == 'walk':
-    swoosh.swoosh(display.get_global_pos(), "down")
+    swoosh.swoosh(display.get_global_pos() + Vector2(0, 16), "down")
     accelerate(JUMP_ACC)
     set_state('jump')
 
