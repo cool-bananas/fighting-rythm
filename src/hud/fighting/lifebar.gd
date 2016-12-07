@@ -17,7 +17,6 @@ var last_percentage = 1.0
 func load_character(character):
   chara = character
   get_node("name").set_text(chara.get_name())
-  chara = character
   chara.connect("life_change", self, "_on_life_change")
 
 func _on_life_change():
