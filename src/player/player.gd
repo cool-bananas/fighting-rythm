@@ -77,7 +77,7 @@ func jump():
   if state == 'stagger':
     return
   if state == 'idle' or state == 'walk':
-    swoosh.swoosh(get_node("player_display").get_pos(), "down")
+    swoosh.swoosh(get_node("player_display").get_global_pos(), "down")
     accelerate(JUMP_ACC)
     set_state('jump')
 

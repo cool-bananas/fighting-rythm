@@ -10,6 +10,7 @@ func swoosh(position, direction):
   print("PREPARE SWOOSH")
   main.get_node("GAME/" + main.get_current()).add_child(new_swoosh)
   print("EXECUTE SWOOSH")
+  print(position)
   new_swoosh.set_pos(position)
   new_swoosh.show()
   animation.stop()
