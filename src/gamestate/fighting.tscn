@@ -43,6 +43,8 @@ transform/scale = Vector2( 0.4, 0.4 )
 
 [node name="bg0" type="Sprite" parent="background"]
 
+transform/pos = Vector2( 0, -80 )
+transform/scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 
 [node name="bg1" type="Sprite" parent="background"]

@@ -33,13 +33,15 @@ func _on_hold_action(action):
   elif action == ACTIONS.P1_LEFT:
     player1.walk(-1)
   elif action == -1:
-    player1.idle()
+    if not Input.is_action_pressed("p1_right") and not Input.is_action_pressed("p1_left"):
+      player1.idle()
   elif action == ACTIONS.P2_RIGHT:
     player2.walk(1)
   elif action == ACTIONS.P2_LEFT:
     player2.walk(-1)
   elif action == -2:
-    player2.idle()
+    if not Input.is_action_pressed("p2_right") and not Input.is_action_pressed("p2_left"):
+      player2.idle()
 
 func _on_press_action(action):
   if action == ACTIONS.P1_UP:
