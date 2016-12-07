@@ -20,10 +20,10 @@ transform/pos = Vector2( 512, 384 )
 
 [node name="char_display1" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 256, 192 )
+transform/pos = Vector2( 256, 224 )
 
 [node name="char_display2" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 768, 192 )
+transform/pos = Vector2( 768, 224 )
 
 

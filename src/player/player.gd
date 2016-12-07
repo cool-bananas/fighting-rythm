@@ -71,7 +71,7 @@ func is_facing(dir):
 func walk(dir):
   if state == 'stagger':
     return
-  if state != 'attack' :
+  if state != 'attack_a' and state != 'attack_b' and state != 'attack_c' :
     accelerate(WALK_ACC * dir)
     if state != 'jump' and state != 'walk':
       set_state('walk')
@@ -80,9 +80,10 @@ func jump():
   if state == 'stagger':
     return
   if state == 'idle' or state == 'walk':
-    swoosh.swoosh(display.get_global_pos() + Vector2(0, 16), "down")
-    accelerate(JUMP_ACC)
-    set_state('jump')
+    if get_pos().y >= FLOOR:
+      swoosh.swoosh(display.get_global_pos() + Vector2(0, 16), "down")
+      accelerate(JUMP_ACC)
+      set_state('jump')
 
 func idle():
   if state == 'walk':
