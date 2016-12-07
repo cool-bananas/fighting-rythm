@@ -3,7 +3,7 @@ extends Node
 
 const GAMESTATES = "res://gamestate/"
 
-export (String, "fighting", "rhythm", "menu") var initial
+export (String, "fighting", "menu") var initial
 onready var gamestate = get_node("GAME")
 var current
 
