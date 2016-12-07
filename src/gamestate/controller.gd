@@ -18,3 +18,6 @@ func get_opponent(player):
   for pl in get_players().get_children():
     if pl != player:
       return pl
+
+func is_input():
+  return false
