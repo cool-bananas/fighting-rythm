@@ -12,6 +12,7 @@ onready var database = get_node("/root/database")
 onready var attacks = get_node("attack")
 onready var timer = get_node("timer")
 onready var tween = get_node("tween")
+onready var sfx = get_node("/root/main/SFX")
 var state = 'idle'
 var facing = 'right'
 var player
@@ -34,9 +35,10 @@ func _ready():
 
 func _process(delta):
   if get_pos().y >= FLOOR and state == 'jump':
-      set_state('idle')
-      var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
-      swoosh.swoosh(pos, "down")
+    sfx.play("jump")
+    set_state('idle')
+    var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
+    swoosh.swoosh(pos, "down")
 
 func set_chara(name):
   yield(self, "player_ready")
@@ -70,6 +72,7 @@ func is_facing(dir):
 
 func walk(dir):
   if state == 'stagger':
+
     return
   if state != 'attack_a' and state != 'attack_b' and state != 'attack_c' :
     accelerate(WALK_ACC * dir)
@@ -81,6 +84,7 @@ func jump():
     return
   if state == 'idle' or state == 'walk':
     if get_pos().y >= FLOOR:
+      sfx.play("jump")
       swoosh.swoosh(display.get_global_pos() + Vector2(0, 16), "down")
       accelerate(JUMP_ACC)
       set_state('jump')
@@ -95,18 +99,22 @@ func attack(type):
 
   if type == 1:
     print("WEAK ATTACK!")
+    #sfx.play("attack_a")
     emit_signal("player_attack", self, "weak")
   elif type == 2:
     print("STRONG ATTACK!")
+    sfx.play("attack_b")
     emit_signal("player_attack", self, "strong")
   elif type == 3:
     print("BULLET ATTACK!")
+    sfx.play("attack_c")
     emit_signal("player_attack", self, "bullet")
 
 func stagger(dir, strength):
   var t = .3 + (strength + 1) * 1/60
   var acc = WALK_ACC * 0.5 * dir * (strength + 1) * (strength + 1)
   var offset = Vector2(-dir * 64, -16)
+  sfx.play("hit")
   tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, t, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
   tween.start()
 
