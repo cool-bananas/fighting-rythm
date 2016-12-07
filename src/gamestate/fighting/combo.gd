@@ -11,21 +11,21 @@ func _on_player_attack(player, type):
 
 func weak_attack(player, attacks):
   player.still()
-  player.set_state('attack')
+  player.set_state('attack_a')
   attacks.weak_attack()
   yield(attacks, "attack_done")
   player.set_state('idle')
 
 func strong_attack(player, attacks):
   player.still()
-  player.set_state('attack')
+  player.set_state('attack_b')
   attacks.strong_attack()
   yield(attacks, "attack_done")
   player.set_state('idle')
 
 func bullet_attack(player, attacks):
   player.still()
-  player.set_state('attack')
+  player.set_state('attack_c')
   attacks.bullet_attack()
   yield(attacks, "attack_done")
   player.set_state('idle')

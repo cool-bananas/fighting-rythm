@@ -20,7 +20,7 @@ script/script = ExtResource( 1 )
 
 polygon = Vector2Array( 0, 640, 1024, 640, 1024, 0, 0, 0 )
 uv = Vector2Array(  )
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.253906, 0.250931, 0.250931, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
