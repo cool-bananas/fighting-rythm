@@ -38,10 +38,10 @@ func load_player(pl):
 		player.set_pos(Vector2(6 * 32 + 924, 500))
 
 func load_background():
-	var bgidx = randi() % (background.get_child_count() - 1)
+	var bgidx = randi() % background.get_child_count()
 	for bg in background.get_children():
 		bg.hide()
-	background.get_child(bgidx)
+	background.get_child(bgidx).show()
 
 func _on_player_ready(pl):
 	ready["p" + str(pl)] = true

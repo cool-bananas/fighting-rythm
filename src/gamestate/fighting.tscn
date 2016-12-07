@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://gamestate/fighting.gd" type="Script" id=1]
-[ext_resource path="res://gamestate/fighting/movement.gd" type="Script" id=2]
-[ext_resource path="res://gamestate/fighting/gravity.gd" type="Script" id=3]
-[ext_resource path="res://gamestate/fighting/facing.gd" type="Script" id=4]
-[ext_resource path="res://gamestate/fighting/attack.gd" type="Script" id=5]
-[ext_resource path="res://gamestate/fighting/stagger.gd" type="Script" id=6]
-[ext_resource path="res://gamestate/fighting/combo.gd" type="Script" id=7]
-[ext_resource path="res://gamestate/fighting/camera.gd" type="Script" id=8]
+[ext_resource path="res://assets/img/cenario_mercadao.tex" type="Texture" id=2]
+[ext_resource path="res://assets/img/cenario_teatro_municipal.tex" type="Texture" id=3]
+[ext_resource path="res://gamestate/fighting/movement.gd" type="Script" id=4]
+[ext_resource path="res://gamestate/fighting/gravity.gd" type="Script" id=5]
+[ext_resource path="res://gamestate/fighting/facing.gd" type="Script" id=6]
+[ext_resource path="res://gamestate/fighting/attack.gd" type="Script" id=7]
+[ext_resource path="res://gamestate/fighting/stagger.gd" type="Script" id=8]
+[ext_resource path="res://gamestate/fighting/combo.gd" type="Script" id=9]
+[ext_resource path="res://gamestate/fighting/camera.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -36,32 +38,29 @@ name = "fighting"
 
 [node name="background" type="Node2D" parent="."]
 
-transform/pos = Vector2( 704, 320 )
+transform/pos = Vector2( 704, 32 )
+transform/scale = Vector2( 0.4, 0.4 )
 
 [node name="bg0" type="Sprite" parent="background"]
 
+transform/pos = Vector2( 0, 240 )
+texture = ExtResource( 2 )
+
 [node name="bg1" type="Sprite" parent="background"]
+
+transform/pos = Vector2( 0, -80 )
+transform/scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 3 )
 
 [node name="bg2" type="Sprite" parent="background"]
 
-[node name="bg3" type="Sprite" parent="background"]
-
-[node name="scenario" type="Polygon2D" parent="."]
-
-polygon = Vector2Array( -64, 544, 1472, 544, 1472, 608, -64, 608 )
-uv = Vector2Array(  )
-color = Color( 0.125, 0.125, 0.125, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
+transform/pos = Vector2( 0, -80 )
+transform/scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 3 )
 
 [node name="limits" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -103,32 +102,32 @@ trigger = false
 
 [node name="movement" type="Node" parent="controllers"]
 
-script/script = ExtResource( 2 )
+script/script = ExtResource( 4 )
 
 [node name="gravity" type="Node" parent="controllers"]
 
-script/script = ExtResource( 3 )
+script/script = ExtResource( 5 )
 
 [node name="facing" type="Node" parent="controllers"]
 
-script/script = ExtResource( 4 )
+script/script = ExtResource( 6 )
 
 [node name="attack" type="Node" parent="controllers"]
 
-script/script = ExtResource( 5 )
+script/script = ExtResource( 7 )
 
 [node name="stagger" type="Node" parent="controllers"]
 
-script/script = ExtResource( 6 )
+script/script = ExtResource( 8 )
 
 [node name="combo" type="Node" parent="controllers"]
 
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 
 [node name="camera" type="Camera2D" parent="controllers"]
 
 transform/pos = Vector2( 704, 512 )
-offset = Vector2( 0, -128 )
+offset = Vector2( 0, -256 )
 anchor_mode = 1
 rotating = false
 current = false
@@ -145,6 +144,6 @@ drag_margin/left = 0.1
 drag_margin/top = 0.1
 drag_margin/right = 0.1
 drag_margin/bottom = 0.1
-script/script = ExtResource( 8 )
+script/script = ExtResource( 10 )
 
 

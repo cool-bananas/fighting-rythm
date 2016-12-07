@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=1]
 
-[ext_resource path="res://assets/img/dummy.tex" type="Texture" id=1]
+[ext_resource path="res://assets/img/Coxinha.tex" type="Texture" id=1]
 [ext_resource path="res://player/animation.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -9,6 +9,11 @@ resource/name = "attack_a"
 length = 1.0
 loop = false
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ 0, 6, 7, 8, 9, 10, 11 ] }
 
 [sub_resource type="Animation" id=2]
 
@@ -37,18 +42,23 @@ resource/name = "fall"
 length = 1.0
 loop = false
 step = 0.1
-
-[sub_resource type="Animation" id=6]
-
-resource/name = "idle"
-length = 0.6
-loop = true
-step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 0, 1, 2, 1 ] }
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 1 ] }
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "idle"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 24, 25, 26, 25 ] }
 
 [sub_resource type="Animation" id=7]
 
@@ -60,9 +70,14 @@ step = 0.1
 [sub_resource type="Animation" id=8]
 
 resource/name = "stagger"
-length = 1.0
+length = 0.3
 loop = false
-step = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.05, 0.1, 0.2, 0.25 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ 27, 30, 31, 32, 33 ] }
 
 [sub_resource type="Animation" id=9]
 
@@ -74,15 +89,16 @@ tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 3, 4, 5, 4 ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.45 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ 36, 37, 38, 4, 39 ] }
 
 [node name="player_display" type="Sprite"]
 
-transform/pos = Vector2( 0, -64 )
-transform/scale = Vector2( 2, 2 )
+transform/pos = Vector2( 0, -80 )
+transform/rot = -10.0
 texture = ExtResource( 1 )
-vframes = 2
-hframes = 3
+vframes = 7
+hframes = 6
+frame = 26
 script/script = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
