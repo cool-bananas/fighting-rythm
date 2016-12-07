@@ -9,3 +9,6 @@ export (String) var name
 
 func _ready():
   connect("gamestate_ready", get_node(HUD_PATH + name), "_on_gamestate_ready")
+
+func get_hud():
+  return get_node(HUD_PATH + name)

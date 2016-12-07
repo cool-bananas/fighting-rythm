@@ -54,6 +54,7 @@ func finish_preparations():
 		var r = randi()
 		var list_size = bgm.get_node("fighting").get_children().size()
 		bgm.play(r % list_size)
+		yield(get_hud(), "fight_message")
 		go_for_fight()
 
 func prepare_for_fight():

@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://assets/img/fight.tex" type="Texture" id=1]
+[ext_resource path="res://assets/img/p1win.tex" type="Texture" id=2]
+[ext_resource path="res://assets/img/p2win.tex" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "fight"
+length = 0.8
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("fight:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.6, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0, 0.0 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("fight:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( -4, -4 ), Vector2( 4, -4 ), Vector2( -4, 4 ), Vector2( 4, 4 ), Vector2( 0, 0 ) ] }
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "p1_win"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("p1_wins:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "p2_win"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("p2_wins:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+
+[node name="messages" type="Node2D"]
+
+[node name="fight" type="Sprite" parent="."]
+
+visibility/visible = false
+visibility/opacity = 0.0
+texture = ExtResource( 1 )
+centered = false
+
+[node name="p1_wins" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 2 )
+centered = false
+
+[node name="p2_wins" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 3 )
+centered = false
+
+[node name="animation" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/fight = SubResource( 1 )
+anims/p1_win = SubResource( 2 )
+anims/p2_win = SubResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+
