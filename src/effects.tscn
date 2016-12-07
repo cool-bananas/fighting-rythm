@@ -27,6 +27,4 @@ script/script = ExtResource( 1 )
 
 [node name="SWOOSH" parent="." instance=ExtResource( 2 )]
 
-visibility/visible = false
-
 

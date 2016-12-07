@@ -6,7 +6,8 @@ signal change_state (st)
 signal player_stagger (player, strength)
 signal player_attack (player, strength)
 
-onready var SWOOSH = get_node("/root/FX/SWOOSH")
+onready var swoosh = get_node("/root/main/FX/SWOOSH")
+onready var display = get_node("player_display")
 onready var database = get_node("/root/database")
 onready var attacks = get_node("attack")
 onready var timer = get_node("timer")
@@ -25,7 +26,7 @@ func _ready():
   var attacks = get_node("attack")
   attacks.set_player(player)
   attacks.connect("attack_animation", self, "_on_attack_animation")
-  connect("change_state", get_node("player_display"), "_on_change_state")
+  connect("change_state", display, "_on_change_state")
   set_process(true)
   print("PLAYER ", player, " READY")
   set_state('idle')
@@ -33,7 +34,9 @@ func _ready():
 
 func _process(delta):
   if get_pos().y >= FLOOR and state == 'jump':
-    set_state('idle')
+      set_state('idle')
+      var pos = Vector2(display.get_global_pos().x, FLOOR - 32)
+      swoosh.swoosh(pos, "down")
 
 func set_chara(name):
   yield(self, "player_ready")
@@ -77,12 +80,11 @@ func jump():
   if state == 'stagger':
     return
   if state == 'idle' or state == 'walk':
+    swoosh.swoosh(display.get_global_pos() + Vector2(0, 16), "down")
     accelerate(JUMP_ACC)
     set_state('jump')
 
 func idle():
-  print("CALLING IDLE")
-  print("Current state: ", get_state())
   if state == 'walk':
     set_state('idle')
 
@@ -103,8 +105,14 @@ func attack(type):
 func stagger(dir, strength):
   var t = .3 + (strength + 1) * 1/60
   var acc = WALK_ACC * 0.5 * dir * (strength + 1) * (strength + 1)
+  var offset = Vector2(-dir * 64, -16)
   tween.interpolate_method(self, "accelerate", 2 * acc, 0.5 * acc, t, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
   tween.start()
+
+  if dir < 0:
+    swoosh.swoosh(display.get_global_pos() + offset, "left")
+  else:
+    swoosh.swoosh(display.get_global_pos() + offset, "right")
   set_state('stagger')
   yield(tween, "tween_complete")
   set_state('idle')

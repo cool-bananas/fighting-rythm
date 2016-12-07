@@ -25,7 +25,7 @@ tracks/2/type = "value"
 tracks/2/path = NodePath("bullet:collision/mask")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0.6 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
+tracks/2/keys = { "times":FloatArray( 0.7 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 
 [sub_resource type="Animation" id=2]
 
@@ -58,12 +58,12 @@ points = Vector2Array( -4, -147.6, 60, -147.6, 60, -51.6, -4, -51.6 )
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 44, -163.6, 92, -147.6, 92, -51.6, 44, -19.6, -20, -19.6, -20, -163.6 )
+points = Vector2Array( 44, -163.6, 76, -115.6, 76, -83.6, 44, -51.6, -20, -83.6, -20, -99.6 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 28, -131.6, 98.4, -125.2, 98.4, -109.2, 28, -99.6 )
+points = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
 
 [node name="attack" type="Node2D"]
 
@@ -84,10 +84,12 @@ autoplay = ""
 
 [node name="player_display" parent="." instance=ExtResource( 2 )]
 
-frame = 22
+visibility/visible = false
+frame = 5
 
 [node name="weak" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 20, 19.6 )
@@ -122,7 +124,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 72
-collision/mask = 0
+collision/mask = 150
 script/script = ExtResource( 3 )
 damage = 40.0
 strength = 1
@@ -131,17 +133,15 @@ strength = 1
 
 transform/pos = Vector2( -12, 19.6 )
 build_mode = 0
-polygon = Vector2Array( 44, -163.6, 92, -147.6, 92, -51.6, 44, -19.6, -20, -19.6, -20, -163.6 )
+polygon = Vector2Array( 44, -163.6, 76, -115.6, 76, -83.6, 44, -51.6, -20, -83.6, -20, -99.6 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
 [node name="bullet" type="Area2D" parent="."]
 
-editor/display_folded = true
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 10 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 206.112, 13.2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -50.4, 13.2 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -155,16 +155,16 @@ strength = 0
 
 [node name="area" type="CollisionPolygon2D" parent="bullet"]
 
-transform/pos = Vector2( 206.112, 13.2 )
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( -50.4, 13.2 )
 build_mode = 0
-polygon = Vector2Array( 28, -131.6, 98.4, -125.2, 98.4, -109.2, 28, -99.6 )
+polygon = Vector2Array( -11.6, -131.2, 56.4, -131.2, 56.4, -103.2, -11.6, -103.2 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
 [node name="can" type="Sprite" parent="bullet/area"]
 
-transform/pos = Vector2( 94.88, -117.2 )
+visibility/opacity = 0.0
+transform/pos = Vector2( 47, -117 )
 texture = ExtResource( 4 )
 
 

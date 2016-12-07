@@ -7,7 +7,7 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 12, -151, 44, -75, 20, 1, -44, 1, -52, -95 )
+points = Vector2Array( 32, -159, 32, 1, -32, 1, -32, -159 )
 
 [node name="player" type="KinematicBody2D"]
 
@@ -28,7 +28,7 @@ offset = Vector2( 0, -16 )
 [node name="hitbox" type="CollisionPolygon2D" parent="."]
 
 build_mode = 0
-polygon = Vector2Array( -52, -95, -44, 1, 20, 1, 44, -75, 12, -151 )
+polygon = Vector2Array( -32, -159, -32, 1, 32, 1, 32, -159 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
