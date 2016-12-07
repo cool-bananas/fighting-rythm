@@ -6,12 +6,12 @@
 
 [node name="chars" type="Node" parent="."]
 
-[node name="dummy" type="Node" parent="chars"]
+[node name="Skatista" type="Node" parent="chars"]
 
 script/script = ExtResource( 1 )
-name = "dummy"
+name = "Skatista"
 hp = 256
-speed = 100.0
+speed = 120.0
 power = 20.0
 
 [node name="Coxinha" type="Node" parent="chars"]

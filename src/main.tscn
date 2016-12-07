@@ -8,7 +8,7 @@
 [node name="main" type="Node"]
 
 script/script = ExtResource( 1 )
-initial = "fighting"
+initial = "menu"
 
 [node name="GAME" type="Node2D" parent="."]
 
