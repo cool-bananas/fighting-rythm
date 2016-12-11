@@ -3,6 +3,6 @@
 !.git*
 
 assets_raw/*
-
+bin/*
 
 

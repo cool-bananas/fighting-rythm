@@ -33,7 +33,7 @@ func get_player_meta(pl):
 	return get_player(pl).get_chara()
 
 func load_player(pl):
-	var player = PLAYERBODY.instance(pl)
+	var player = PLAYERBODY.instance()
 	var charname = setup.get_player(pl)
 	player.get_node("player_display").set_texture(load("res://assets/img/" + charname + ".tex"))
 	player.set_id(pl)
