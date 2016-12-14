@@ -3,10 +3,10 @@
 # Sampa Fight
 
 Um jogo de luta e ritmo com temática de São Paulo.
+Feito para a disciplina **PCS2530 Design e Programação de Games**,
+no segundo semestre de 2016.
 
-### PCS 2530 Design e Programação de Games
-
-**Grupo**
+### Grupo
 
 + Carlos Marin
 + Daniel Hotta
